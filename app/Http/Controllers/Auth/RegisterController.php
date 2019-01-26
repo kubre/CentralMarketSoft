@@ -106,16 +106,9 @@ class RegisterController extends Controller
     {
 
         // Save Address
-        $address = new Address;
-        $address->block_no = $request->input('block_no');
-        $address->village = $request->input('village');
-        $address->city = $request->input('city');
-        $address->district = $request->input('district');
-    
-        $address->save();
         
-        // Create new shop after user is registered
-        $shop =  new Shop;
+        // create new shop after user is registered
+        $shop =  new shop;
         $shop->shop_name = $request->input('shop_name');
         $shop->dob = $request->input('dob');
         $shop->shop_do = $request->input('shop_do');
@@ -132,9 +125,17 @@ class RegisterController extends Controller
         $shop->gst = $request->input('gst');
         $shop->aadhar = $request->input('aadhar');
         $shop->pan = $request->input('pan');
-
+        
         $shop->user_id = $user->id;
-        $shop->address_id = $address->id; 
         $shop->save();
+
+        $address = new Address;
+        $address->belongs_to = $shop->id;
+        $address->block_no = $request->input('block_no');
+        $address->village = $request->input('village');
+        $address->city = $request->input('city');
+        $address->district = $request->input('district');
+    
+        $address->save();
     }
 }

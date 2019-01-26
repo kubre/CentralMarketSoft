@@ -37,7 +37,6 @@ class CreateShopsTable extends Migration
             $table->string('pan');
             
             $table->integer('user_id');
-            $table->integer('address_id');
             
             $table->timestamps();
         });
