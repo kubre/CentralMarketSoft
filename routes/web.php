@@ -18,3 +18,7 @@ Auth::routes();
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 Route::get('/admin', 'AdminController@index')->name('admin');
+
+Route::put('/admin/user/{id}/approve', 'AdminController@approveUser');
+
+Route::put('/admin/user/{id}/disapprove', 'AdminController@disapproveUser');

@@ -4,4 +4,5 @@
 
  - [x] Basic Auth - vkubre
  - [x] Admin-User Role based Auth - vkubre
- - [ ] Admin Dashboard and user approval Feature
+ - [x] Admin Dashboard and user approval Feature - vkubre
+ - [] Responsive search admin dashboard
