@@ -13,7 +13,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    Your Shop <strong>{{ Auth::user()->shop->shop_name }}</strong> and your address is <strong>{{ Auth::user()->shop->address->village }},
+                    Your Shop <strong>{{ Auth::user()->role }}</strong> and your address is
+                    <strong>{{ Auth::user()->shop->address->village }},
                     {{ Auth::user()->shop->address->city }}, {{ Auth::user()->shop->address->district }}</strong>.
                 </div>
             </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use App\User;
 
 class LoginController extends Controller
 {
@@ -60,5 +61,21 @@ class LoginController extends Controller
             $this->username() => 'required|digits:10',
             'password' => 'required|string',
         ]);
+    }
+
+    /**
+     * The user has been authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\User  $user
+
+     * @return mixed
+     */
+    protected function authenticated(Request $request, User $user)
+    {
+        $isAdmin = $user->isAdmin();
+        if ($isAdmin) {
+            return redirect('admin');
+        }
     }
 }

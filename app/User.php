@@ -34,4 +34,15 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Shop');
     }
+
+    /**
+     * Checkes whether or not user is admin
+     *
+     * @return boolean
+     */
+    public function isAdmin()
+    {
+        $isAdmin = $this->role === 'admin';
+        return $isAdmin;
+    }
 }

@@ -17,3 +17,4 @@ Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
+Route::get('/admin', 'AdminController@index')->name('admin');
