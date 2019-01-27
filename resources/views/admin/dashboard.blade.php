@@ -4,6 +4,15 @@
 <div class="container panel">
     <div class="panel-heading">Dashboard</div>
     <div class="panel-body">
+        <form class="form-horizontal" action="" method="">
+            <div class="input-group">
+                <input class="form-control" name="search" id="search" type="text" placeholder="Search by Mobile">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default">Search</button>
+                </span>
+            </div>
+        </form>
+        <hr>
         <table class="table">
             <thead>
                 <tr>

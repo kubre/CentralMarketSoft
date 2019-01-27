@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -73,9 +74,12 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, User $user)
     {
-        $isAdmin = $user->isAdmin();
-        if ($isAdmin) {
+        if ($user->isAdmin()) {
             return redirect('admin');
+        }
+
+        if (!$user->is_active) {
+            return view('pages.notapproved')->with(Auth::logout());
         }
     }
 }
