@@ -2,8 +2,8 @@
 
 ## Roadmap
 
- - [x] Basic Auth - vkubre
- - [x] Admin-User Role based Auth - vkubre
- - [x] Admin Dashboard and user approval Feature - vkubre
+ - [x] Basic Auth
+ - [x] Admin-User Role based Auth
+ - [x] Admin Dashboard and user approval Feature 
  - [x] Redirect Non Approved User
- - [ ] Responsive search admin dashboard
+ - [x] Search users in admin dashboard

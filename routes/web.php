@@ -22,3 +22,9 @@ Route::get('/admin', 'AdminController@index')->name('admin');
 Route::put('/admin/user/{id}/approve', 'AdminController@approveUser');
 
 Route::put('/admin/user/{id}/disapprove', 'AdminController@disapproveUser');
+
+Route::post('/admin/user/search', 'AdminController@searchUser');
+
+Route::get('/admin/user/search', function () {
+    return redirect('admin');
+});

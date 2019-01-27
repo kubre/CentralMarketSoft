@@ -30,7 +30,7 @@ class AdminController extends Controller
      * Approve user for logging in
      *
      * @param Request $request
-     * @param [type] $id
+     * @param int $id
      * @return void
      */
     public function approveUser(Request $request, $id)
@@ -45,7 +45,7 @@ class AdminController extends Controller
      * Approve user for logging in
      *
      * @param Request $request
-     * @param [type] $id
+     * @param int $id
      * @return void
      */
     public function disapproveUser(Request $request, $id)
@@ -54,5 +54,33 @@ class AdminController extends Controller
         $user->is_active = false;
         $user->save();
         return redirect('admin');
+    }
+
+    /**
+     * Search for user
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function searchUser(Request $request)
+    {
+        $data = $request->validate([
+            "mobile" => "required"
+        ]);
+
+        $users = User::where('role', 'user')
+                      ->where('mobile', 'LIKE', "%{$data['mobile']}%")
+                      ->orderBy('created_at', 'desc')
+                      ->simplePaginate(100);
+
+        $found = false;
+        if (count($users) > 0) {
+            $found = true;
+        }
+        return view('admin.dashboard', [
+            'users' => $users,
+            'mobile' => $data['mobile'],
+            'found' => $found
+        ]);
     }
 }
