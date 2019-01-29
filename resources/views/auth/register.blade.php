@@ -29,7 +29,7 @@
                             <label for="mobile" class="col-md-4 control-label">Mobile No.</label>
 
                             <div class="col-md-6">
-                                <input id="mobile" type="text" class="form-control" max="10" min="10" name="mobile" value="{{ old('mobile') }}" required>
+                                <input id="mobile" type="text" class="form-control" maxlength="10" minlength="10" name="mobile" value="{{ old('mobile') }}" required>
 
                                 @if ($errors->has('mobile'))
                                     <span class="help-block">
@@ -252,7 +252,7 @@
                             <label for="pan" class="col-md-4 control-label">pan</label>
 
                             <div class="col-md-6">
-                                <input id="pan" type="text" class="form-control" name="pan" max="10" min="10" value="{{ old('pan') }}">
+                                <input id="pan" type="text" class="form-control" name="pan" maxlength="10" minlength="10" value="{{ old('pan') }}">
 
                                 @if ($errors->has('pan'))
                                     <span class="help-block">
@@ -266,7 +266,7 @@
                             <label for="aadhar" class="col-md-4 control-label">aadhar</label>
 
                             <div class="col-md-6">
-                                <input id="aadhar" type="text" class="form-control" name="aadhar" min="12" max="12" value="{{ old('aadhar') }}">
+                                <input id="aadhar" type="text" class="form-control" name="aadhar" minlength="12" maxlength="12" value="{{ old('aadhar') }}">
 
                                 @if ($errors->has('aadhar'))
                                     <span class="help-block">

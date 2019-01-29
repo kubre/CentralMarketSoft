@@ -28,3 +28,7 @@ Route::post('/admin/user/search', 'AdminController@searchUser');
 Route::get('/admin/user/search', function () {
     return redirect('admin');
 });
+
+Route::get('/farmer/create', 'FarmersController@create');
+
+Route::post('/farmer', 'FarmersController@store');

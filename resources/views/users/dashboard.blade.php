@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('nav')
+    <li><a href="/dashboard">Dashboard</a></li>
+    <li><a href="/farmer/create">Add Farmer</a></li>
+    <li><a href="/license">Update License</a></li>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row">
@@ -13,9 +19,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    Your Shop <strong>{{ Auth::user()->role }}</strong> and your address is
-                    <strong>{{ Auth::user()->shop->address->village }},
-                    {{ Auth::user()->shop->address->city }}, {{ Auth::user()->shop->address->district }}</strong>.
+                    
                 </div>
             </div>
         </div>
