@@ -11,6 +11,6 @@
 
 ### Users(Shop) Side
  - [x] Section to add Farmers data
- - [ ] Section to Add credit
- - [ ] Section to Update credit
- - [ ] Section search through Central Credit DB.  
+ - [ ] Section to Add Debit.
+ - [ ] Section to Update Debit.
+ - [ ] Section search through Central Debit DB.

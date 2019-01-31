@@ -45,4 +45,16 @@ class FarmersController extends Controller
 
         return back()->withErrors('Problem while registering!');
     }
+
+    public function search(Request $request)
+    {
+        if ($request->ajax()) {
+            $output = '';
+            $query = $request->input('query');
+
+            if ($query != '') {
+                $data = Farmer::where('first_name', 'LIKE', '');
+            }
+        }
+    }
 }

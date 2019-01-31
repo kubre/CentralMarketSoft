@@ -10,4 +10,9 @@ class Shop extends Model
     {
         return $this->hasOne('App\Address', 'belongs_to');
     }
+
+    public function debit()
+    {
+        return $this->hasMany('App\Debit');
+    }
 }
