@@ -33,8 +33,6 @@ Route::get('/farmer/create', 'FarmersController@create');
 
 Route::post('/farmer', 'FarmersController@store');
 
-Route::post("/farmer/search", 'FarmersController@search');
-
 Route::resource('/debit', 'DebitsController');
 
 Route::post("/debit/search", "DebitsController@search");

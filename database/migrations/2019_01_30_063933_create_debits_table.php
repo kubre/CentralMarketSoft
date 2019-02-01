@@ -17,7 +17,7 @@ class CreateDebitsTable extends Migration
             $table->increments('id');
             $table->decimal('amount', 18, 2);
             $table->integer('farmer_id');
-            $table->integer('shop_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

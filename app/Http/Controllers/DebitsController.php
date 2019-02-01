@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Debit;
+use App\Farmer;
 
 class DebitsController extends Controller
 {
@@ -38,7 +41,34 @@ class DebitsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            "identity" => "required|min:10|max:12",
+            "amount" => "required|numeric"
+        ]);
+
+        $farmer = Farmer::where('aadhar', $data['identity'])
+                            ->orWhere('pan', $data['identity'])
+                            ->first();
+        if (is_null($farmer)) {
+            return back()->withErrors([
+                "identity" => "Aadhar/PAN doesn't exist."
+            ]);
+        }
+
+        $debt = new Debit();
+        $debt->amount = round($data['amount'], 2);
+        $debt->farmer_id = $farmer->id;
+        $debt->user_id = Auth::user()->id;
+
+        if ($debt->save()) {
+            return back()->with('messages', [
+                "success" => "Debit issued successfully! Please search and make sure it exists in Search Debt. Screen"
+            ]);
+        }
+
+        return back()->withErrors([
+            "problem" => "Problem while entering data! Contact Administrator."
+        ]);
     }
 
     /**

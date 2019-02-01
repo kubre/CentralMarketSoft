@@ -1,10 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.user')
 
 @section('content')
 
 <div class="container panel panel-default">
     <div class="panel-heading">
-        <span class="pull-left" style="margin-right: 10px;"><a href="/dashboard" class="btn btn-info">Back</a></span>
         <h4>Register Farmer to Central a Database</h4> 
     </div>
     <div class="panel-body">
