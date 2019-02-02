@@ -53,10 +53,21 @@
                             </div>
                         </div>
                     </form>
-
-                    <div>
-                        <table class="table">
-                            {{-- TODO: make live search --}}
+                    <hr>
+                    <div class="">
+                        <strong>Search Results</strong>
+                        <table class="table" id="debt-table">
+                            <thead>
+                                <tr>
+                                    <th>Full Name</th>
+                                    <th>Aadhar/PAN</th>
+                                    <th>Address</th>
+                                    <th>Shop</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
                         </table>
                     </div>
 
@@ -65,4 +76,26 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            
+            function fetchDebts(data) {
+                $.post("/debit/search", data , function(res) {
+                    $("#debt-table tbody").html(res.tbody);
+                });
+            }
+
+            $("#first_name").on("keyup", function() {
+                var data = {
+                    "_token": "{{ csrf_token() }}",
+                    "first_name": $("#first_name").val()
+                };
+                fetchDebts(data);
+            });
+
+        });
+    </script>
 @endsection

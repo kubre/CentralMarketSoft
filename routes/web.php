@@ -35,4 +35,4 @@ Route::post('/farmer', 'FarmersController@store');
 
 Route::resource('/debit', 'DebitsController');
 
-Route::post("/debit/search", "DebitsController@search");
+Route::post("/debit/search", "SearchDebitsController@search");
