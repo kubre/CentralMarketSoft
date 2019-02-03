@@ -1,6 +1,6 @@
 <div class="container">
     @if ($errors->any())
-        <div class="alert alert-danger">
+        <div class="alert alert-danger" style="margin-top: 10px">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -10,9 +10,9 @@
     @endif
 </div>
 
-<div class="container" style="margin-top: 10px;">
+<div class="container">
     @if (session()->has('messages'))
-        <div class="alert alert-success">
+        <div class="alert alert-success" style="margin-top: 10px">
             <ul>
                 @foreach (session('messages') as $message)
                     <li>{{ $message }}</li>

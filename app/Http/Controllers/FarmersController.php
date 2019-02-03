@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Farmer;
+use App\Address;
 
 class FarmersController extends Controller
 {
@@ -22,14 +23,18 @@ class FarmersController extends Controller
         $data = $request->validate([
             "first_name" => "required|string",
             "last_name" => "required|string",
-            "mobile" => "required|digits:10|unique:farmers",
+            "mobile" => "required|regex:/[7-9]{1}\d{9}/|unique:farmers",
             "dob" => "required|date",
             "aadhar" => "required|digits:12|unique:farmers",
             "pan" => "required|size:10|unique:farmers",
             "light_bill" => "required|string",
+            'block_no' => 'required|string',
+            'village' => 'required|string',
+            'city' => 'required|string',
+            'district' => 'required|string',
         ]);
 
-        $farmer = new Farmer();
+        $farmer = new Farmer;
         
         $farmer->first_name = $data['first_name'];
         $farmer->last_name = $data['last_name'];
@@ -39,22 +44,21 @@ class FarmersController extends Controller
         $farmer->pan = $data['pan'];
         $farmer->light_bill = $data['light_bill'];
 
-        if ($farmer->save()) {
-            return back()->with('status', 'Farmer registered succesfully!');
+        if (!$farmer->save()) {
+            return back()
+                    ->withErrors(['Problem while regitering farmer!'])
+                    ->withInput();
+        }
+        
+        // If error occured while adding address destroy farmer record too
+        if (!Address::makeFromRequest($request, $farmer->id)) {
+            $farmer->destroy();
+            
+            return back()
+                    ->withErrors(['Problem while adding Address!'])
+                    ->withInput();
         }
 
-        return back()->withErrors('Problem while registering!');
-    }
-
-    public function search(Request $request)
-    {
-        if ($request->ajax()) {
-            $output = '';
-            $query = $request->input('query');
-
-            if ($query != '') {
-                $data = Farmer::where('first_name', 'LIKE', '');
-            }
-        }
+        return back()->with('status', 'Farmer registered succesfully!');
     }
 }

@@ -14,42 +14,35 @@
                     </div>
                     @endif
 
-                    <form class="form-horizontal" action="" method="post">
+                    <form id="debt-search-form" class="form-horizontal" action="javascript:void(0)" method="post">
                         <div class="row" style="margin: 10px auto;">
                             <div class="col-md-6 row">
                                 <label for="" class="col-md-4">First Name</label>
-                                <input class="col-md-8" type="text" id="first_name" name="first_name">
+                                <input class="col-md-8 search" type="text" id="first_name" name="first_name">
                             </div>
                             <div class="col-md-6 row">
                                 <label for="" class="col-md-4">Last Name</label>
-                                <input class="col-md-8" type="text" name="last_name" id="last_name">
+                                <input class="col-md-8 search" type="text" name="last_name" id="last_name">
                             </div>
                         </div>
                         <div class="row" style="margin: 10px auto;">
                             <div class="col-md-6 row">
                                 <label for="" class="col-md-4">Mobile</label>
-                                <input class="col-md-8" type="text" name="mobile" id="mobile">
+                                <input class="col-md-8 search" type="text" name="mobile" id="mobile">
                             </div>
                             <div class="col-md-6 row">
                                 <label for="" class="col-md-4">Date Of Birth</label>
-                                <input class="col-md-8" style="padding: 6px 5px" type="date" name="dob" id="dob">
+                                <input class="col-md-8 search" style="padding: 6px 5px" type="date" name="dob" id="dob">
                             </div>
                         </div>
                         <div class="row" style="margin: 10px auto;">
                             <div class="col-md-6 row">
                                 <label for="" class="col-md-4">Aadhar</label>
-                                <input class="col-md-8" type="text" name="aadhar" id="aadhar">
+                                <input class="col-md-8 search" type="text" name="aadhar" id="aadhar">
                             </div>
                             <div class="col-md-6 row">
                                 <label class="col-md-4" for="">Pan</label>
-                                <input class="col-md-8" type="text" name="pan" id="pan">
-                            </div>
-                        </div>
-
-                        <div class="row" style="margin: 10px auto;">
-                            <div class="col-md-6 row">
-                                <label class="col-md-4" for="">Light Bill</label>
-                                <input class="col-md-8" type="text" name="light_bill" id="light_bill">
+                                <input class="col-md-8 search" type="text" name="pan" id="pan">
                             </div>
                         </div>
                     </form>
@@ -64,9 +57,13 @@
                                     <th>Address</th>
                                     <th>Shop</th>
                                     <th>Amount</th>
+                                    <th>Edit</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <tr>
+                                    <td colspan="5">Type something above...</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -88,10 +85,12 @@
                 });
             }
 
-            $("#first_name").on("keyup", function() {
+            $("#debt-search-form").on("keyup", "input.search",function() {
                 var data = {
                     "_token": "{{ csrf_token() }}",
-                    "first_name": $("#first_name").val()
+                    "first_name": $("#first_name").val(),
+                    "last_name": $("#last_name").val(),
+                    "mobile": $("#mobile").val()
                 };
                 fetchDebts(data);
             });

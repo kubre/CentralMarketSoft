@@ -49,10 +49,11 @@ class DebitsController extends Controller
         $farmer = Farmer::where('aadhar', $data['identity'])
                             ->orWhere('pan', $data['identity'])
                             ->first();
+
         if (is_null($farmer)) {
             return back()->withErrors([
                 "identity" => "Aadhar/PAN doesn't exist."
-            ]);
+            ])->withInput();
         }
 
         $debt = new Debit();
@@ -68,7 +69,7 @@ class DebitsController extends Controller
 
         return back()->withErrors([
             "problem" => "Problem while entering data! Contact Administrator."
-        ]);
+        ])->withInput();
     }
 
     /**

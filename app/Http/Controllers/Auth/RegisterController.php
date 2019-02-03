@@ -52,7 +52,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'mobile' => 'required|digits:10|unique:users',
+            'mobile' => 'required|regex:/[7-9]{1}\d{9}/|unique:users',
             'password' => 'required|string|min:6|confirmed',
             'shop_name' => 'required|string|max:255',
             'dob' => 'required|date',
@@ -103,9 +103,6 @@ class RegisterController extends Controller
      */
     protected function registered(Request $request, $user)
     {
-
-        // Save Address
-        
         // create new shop after user is registered
         $shop =  new shop;
         $shop->shop_name = $request->input('shop_name');
@@ -126,15 +123,18 @@ class RegisterController extends Controller
         $shop->pan = $request->input('pan');
         
         $shop->user_id = $user->id;
-        $shop->save();
 
-        $address = new Address;
-        $address->belongs_to = $shop->id;
-        $address->block_no = $request->input('block_no');
-        $address->village = $request->input('village');
-        $address->city = $request->input('city');
-        $address->district = $request->input('district');
-    
-        $address->save();
+        if (!$shop->save()) {
+            return back()->withErrors([
+                "Problem while regitering shop!"
+            ]);
+        }
+
+        if (!Address::makeFromRequest($request, $shop->id)) {
+            $shop->destroy();
+            return back()->withErrors([
+                "Problem while adding Address!"
+            ]);
+        }
     }
 }
