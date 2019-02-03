@@ -40,7 +40,7 @@ class SearchDebitsController extends Controller
                     foreach ($farmers as $farmer) {
                         foreach ($farmer->debits->all() as $debit) {
                             if ($debit->user_id === Auth::user()->id) {
-                                $editCell = "<a class='btn btn-primary' href='/debit/edit/$debit->id'>Edit</a>";
+                                $editCell = "<a class='btn btn-primary' href='/debit/$debit->id/edit'>Edit</a>";
                             }
 
                             $htmlTable .= "
@@ -53,6 +53,7 @@ class SearchDebitsController extends Controller
                                     <td> $editCell </td>
                                 </tr>";
                         }
+                        $editCell = "Not Authorised";
                     }
                 } else {
                     $htmlTable = "<tr><td colspan='6'>No Match Found!</td></tr>";

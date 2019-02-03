@@ -91,7 +91,13 @@ class DebitsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $debt = Debit::find($id);
+
+        if ($debt->user_id !== Auth::user()->id) {
+            return back()->with(Auth::logout());
+        }
+
+        return view('debits.edit')->with('debt', $debt);
     }
 
     /**
@@ -103,7 +109,21 @@ class DebitsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->validate([
+            "amount" => "required|numeric"
+        ]);
+
+        $debt = Debit::find($id);
+        $debt->amount = round($data['amount'], 2);
+
+        if (!$debt->save()) {
+            return back()->withErrors([
+                "problem" => "Problem while entering Debt! Contact Administrator."
+            ])->withInput();
+        }
+        return back()->with('messages', [
+                    "success" => "Debt. updated successfully! Please search and make sure it exists in Search Debt. Screen."
+            ]);
     }
 
     /**
