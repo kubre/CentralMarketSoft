@@ -17,6 +17,15 @@ Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
+// License Section
+Route::get('/license', 'DashboardController@license');
+
+// Update License
+Route::put('/license/seed', 'DashboardController@updateSeedExp');
+Route::put('/license/fert', 'DashboardController@updateFertExp');
+Route::put('/license/pest', 'DashboardController@updatePestExp');
+Route::put('/license/shop', 'DashboardController@updateShopExp');
+
 Route::get('/admin', 'AdminController@index')->name('admin');
 
 Route::put('/admin/user/{id}/approve', 'AdminController@approveUser');
