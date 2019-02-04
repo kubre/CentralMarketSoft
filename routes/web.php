@@ -15,6 +15,10 @@ Route::get('/', 'PagesController@index');
 
 Auth::routes();
 
+Route::post('/password/reset/verify', 'ResetPasswordController@verify')->name('reset.verify');
+
+Route::post('/password/reset/change', 'ResetPasswordController@reset')->name('reset.change');
+
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 // License Section

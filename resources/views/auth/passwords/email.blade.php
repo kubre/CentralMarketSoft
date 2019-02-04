@@ -14,18 +14,46 @@
                         </div>
                     @endif
 
-                    <form class="form-horizontal" method="POST" action="{{ route('password.email') }}">
+                    <form class="form-horizontal" method="POST" action="{{ route('reset.verify') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                        <div class="form-group{{ $errors->has('mobile') ? ' has-error' : '' }}">
+                            <label for="mobile" class="col-md-4 control-label">Registered Mobile no.</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="mobile" type="text" class="form-control" name="mobile" value="{{ old('mobile') }}" required>
 
-                                @if ($errors->has('email'))
+                                @if ($errors->has('mobile'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('mobile') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('aadhar') ? ' has-error' : '' }}">
+                            <label for="aadhar" class="col-md-4 control-label">Aadhar No.</label>
+
+                            <div class="col-md-6">
+                                <input id="mobile" type="text" class="form-control" name="aadhar" value="{{ old('aadhar') }}" required>
+
+                                @if ($errors->has('aadhar'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('aadhar') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('pan') ? ' has-error' : '' }}">
+                            <label for="pan" class="col-md-4 control-label">PAN No.</label>
+
+                            <div class="col-md-6">
+                                <input id="pan" type="text" class="form-control" name="pan" value="{{ old('pan') }}" required>
+
+                                @if ($errors->has('pan'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('pan') }}</strong>
                                     </span>
                                 @endif
                             </div>
