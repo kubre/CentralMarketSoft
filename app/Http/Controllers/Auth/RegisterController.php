@@ -7,6 +7,7 @@ use App\Address;
 use App\Shop;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 
@@ -68,8 +69,8 @@ class RegisterController extends Controller
             'shop_exp' => 'required|date',
             
             'gst' => 'required|string',
-            'aadhar' => 'required|digits:12',
-            'pan' => 'required|string',
+            'aadhar' => 'required|digits:12|unique:shops',
+            'pan' => 'required|string|unique:shops',
 
             'block_no' => 'required|string',
             'village' => 'required|string',
@@ -126,15 +127,18 @@ class RegisterController extends Controller
 
         if (!$shop->save()) {
             return back()->withErrors([
-                "Problem while regitering shop!"
+                'Problem while regitering shop!'
             ]);
         }
 
         if (!Address::makeFromRequest($request, $shop->id)) {
             $shop->destroy();
             return back()->withErrors([
-                "Problem while adding Address!"
+                'Problem while adding Address!'
             ]);
         }
+        return redirect('/login')->with('messages', [
+            'Created account succesfully!'
+        ])->with(Auth::logout());
     }
 }

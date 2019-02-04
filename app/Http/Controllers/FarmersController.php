@@ -23,7 +23,7 @@ class FarmersController extends Controller
         $data = $request->validate([
             "first_name" => "required|string",
             "last_name" => "required|string",
-            "mobile" => "required|regex:/[7-9]{1}\d{9}/|unique:farmers",
+            "mobile" => "required|regex:#[7-9]{1}\d{9}#|unique:farmers",
             "dob" => "required|date",
             "aadhar" => "required|digits:12|unique:farmers",
             "pan" => "required|size:10|unique:farmers",
@@ -46,7 +46,7 @@ class FarmersController extends Controller
 
         if (!$farmer->save()) {
             return back()
-                    ->withErrors(['Problem while regitering farmer!'])
+                    ->withErrors(['Problem while registering farmer!'])
                     ->withInput();
         }
         
@@ -59,6 +59,6 @@ class FarmersController extends Controller
                     ->withInput();
         }
 
-        return back()->with('status', 'Farmer registered succesfully!');
+        return back()->with('messages', ['Farmer registered succesfully!']);
     }
 }

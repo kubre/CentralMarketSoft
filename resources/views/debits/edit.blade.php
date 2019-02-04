@@ -11,13 +11,13 @@
     </div>
     <div class="panel-body">
 
-        <form class="form-horizontal" action="/debit/{{ $debt->id }}" method="post">
+        <form class="form-horizontal" style="font-family: monospace !important" action="/debit/{{ $debt->id }}" method="post">
             {{ csrf_field() }}
             {{ method_field('PUT') }}
 
 
             <div class="form-group{{ $errors->has('amount') ? ' has-error' : '' }}">
-                <label for="identity" class="col-md-4 control-label">Addhar/Pan</label>
+                <label for="identity" class="col-md-4 control-label">Addhar/PAN</label>
 
                 <div class="col-md-6">
 
@@ -25,11 +25,20 @@
                 </div>
             </div>
 
-            <div class="form-group{{ $errors->has('amount') ? ' has-error' : '' }}">
-                <label for="amount" class="col-md-4 control-label">New Amount</label>
+            <div class="row">
+                <div class="col-sm-4">Old Amount</div>
+                <div class="col-sm-5">Amount to Subtract</div>
+                <div class="col-sm-3">New Amount</div>
+            </div>
+            <hr>
 
-                <div class="col-md-6">
-                    <input id="amount" type="text" class="form-control" name="amount" value="{{ $debt->amount }}"
+            <div class="form-group{{ $errors->has('amount') ? ' has-error' : '' }} row">
+                <div class="col-sm-3" style="font-weight: bold;font-size: 16px">
+                    <input id="total-amount" class="form-control" readonly value="{{ $debt->amount }}">
+                </div>
+                <div class="col-sm-1" style="font-weight: bold;font-size: 16px;text-align:center">-</div>
+                <div class="col-sm-4">
+                    <input id="sub-amount" type="text" class="form-control" name="sub-amount" value="0"
                         required autofocus>
 
                     @if ($errors->has('amount'))
@@ -38,7 +47,13 @@
                     </span>
                     @endif
                 </div>
+                <div  class="col-sm-1" style="font-weight: bold;font-size: 16px;text-align:center">=</div>
+                <div class="col-sm-3" style="font-weight: bold">
+                    <input class="form-control" id="read-amount" type="text" readonly>
+                    <input id="amount" name="amount" type="hidden">
+                </div>
             </div>
+ 
 
             <hr>
 
@@ -50,4 +65,27 @@
     </div>
 </div>
 
+@endsection
+
+@section('scripts')
+    <script>
+    $(document).ready(function() {
+        calcAmount();
+
+        function calcAmount() {
+            var amount = parseFloat($('#total-amount').val()) - parseFloat($('#sub-amount').val());
+            if(amount < 0 || isNaN(amount)) {
+                $("button[type='submit']").attr('disabled', 'true');
+            } else {
+                $("button[type='submit']").removeAttr('disabled');
+            }
+            $('#amount').val(amount.toString());
+            $('#read-amount').val(amount.toString());
+        }
+
+        $('#sub-amount').on('keyup', function() {
+            calcAmount();
+        });
+    });
+    </script>
 @endsection

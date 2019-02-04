@@ -16,3 +16,10 @@
  - [x] Section to search through Central Debt. DB
  - [x] Section to see and update Licenses
  - [x] Reset Password
+
+## Change Stuff 2019.02.04
+ - [x] Send back to login after register
+ - [x] Succes message - farmer.create
+ - [x] debt.edit minus amount instead of new Amount
+ - [ ] DOB - Village
+ - [ ] Transcations
