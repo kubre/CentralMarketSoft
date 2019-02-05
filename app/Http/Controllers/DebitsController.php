@@ -82,7 +82,8 @@ class DebitsController extends Controller
      */
     public function show($id)
     {
-        //
+        $debt = Debit::find($id);
+        return view('debits.show')->with('debt', $debt);
     }
 
     /**

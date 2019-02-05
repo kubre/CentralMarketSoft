@@ -13,7 +13,7 @@
             </div>
             <div class="panel-body">
                 <div class="col-md-4">
-                    Expires on <strong>{{ date("D/j-M-Y", strtotime($shop->seed_exp)) }}</strong>.
+                    Expires on <strong>{{ date("(D)j-M-Y", strtotime($shop->seed_exp)) }}</strong>.
                 </div>
                 <form action="/license/seed" method="post">
                     {{ csrf_field() }}
@@ -35,7 +35,7 @@
             </div>
             <div class="panel-body">
                 <div class="col-md-4">
-                    Expires on <strong>{{ date("D/j-M-Y", strtotime($shop->fert_exp)) }}</strong>.
+                    Expires on <strong>{{ date("(D)j-M-Y", strtotime($shop->fert_exp)) }}</strong>.
                 </div>
                 <form action="/license/fert" method="post">
                     {{ csrf_field() }}
@@ -57,7 +57,7 @@
             </div>
             <div class="panel-body">
                 <div class="col-md-4">
-                    Expires on <strong>{{ date("D/j-M-Y", strtotime($shop->pest_exp)) }}</strong>.
+                    Expires on <strong>{{ date("(D)j-M-Y", strtotime($shop->pest_exp)) }}</strong>.
                 </div>
                 <form action="/license/pest" method="post">
                     {{ csrf_field() }}
@@ -79,7 +79,7 @@
             </div>
             <div class="panel-body">
                 <div class="col-md-4">
-                    Expires on <strong>{{ date("D/j-M-Y", strtotime($shop->shop_exp)) }}</strong>.
+                    Expires on <strong>{{ date("(D)j-M-Y", strtotime($shop->shop_exp)) }}</strong>.
                 </div>
                 <form action="/license/shop" method="post">
                     {{ csrf_field() }}

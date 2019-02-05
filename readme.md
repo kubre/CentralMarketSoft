@@ -21,6 +21,7 @@
  - [x] Send back to login after register
  - [x] Succes message - farmer.create
  - [x] debt.edit minus amount instead of new Amount
- - [ ] Add comment field in Debt. add screen
- - [ ] Improve Searching
+ - [x] Add comment field in Debt. add screen
+ - [x] Improve Searching
+ - [x] Debt. Details screen 
  - [ ] Transcations

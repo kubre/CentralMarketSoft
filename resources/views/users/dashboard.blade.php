@@ -31,8 +31,8 @@
                                 <input class="col-md-8 search" type="text" name="mobile" id="mobile">
                             </div>
                             <div class="col-md-6 row">
-                                <label for="" class="col-md-4">Date Of Birth</label>
-                                <input class="col-md-8 search" style="padding: 6px 5px" type="date" name="dob" id="dob">
+                                <label for="" class="col-md-4">Village</label>
+                                <input class="col-md-8 search" type="text" name="village" id="village">
                             </div>
                         </div>
                         <div class="row" style="margin: 10px auto;">
@@ -41,7 +41,7 @@
                                 <input class="col-md-8 search" type="text" name="aadhar" id="aadhar">
                             </div>
                             <div class="col-md-6 row">
-                                <label class="col-md-4" for="">Pan</label>
+                                <label class="col-md-4" for="">PAN</label>
                                 <input class="col-md-8 search" type="text" name="pan" id="pan">
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                                     <th>Address</th>
                                     <th>Shop</th>
                                     <th>Amount</th>
-                                    <th>Edit</th>
+                                    <th>Details</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -90,7 +90,10 @@
                     "_token": "{{ csrf_token() }}",
                     "first_name": $("#first_name").val(),
                     "last_name": $("#last_name").val(),
-                    "mobile": $("#mobile").val()
+                    "mobile": $("#mobile").val(),
+                    "village": $("#village").val(),
+                    "aadhar": $("#aadhar").val(),
+                    "pan": $("#pan").val()
                 };
                 fetchDebts(data);
             });
