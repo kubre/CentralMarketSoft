@@ -13,11 +13,25 @@
             font-family: monospace;
             margin-left: 10px;
         }
+
+        .table th {
+            text-align: center;
+        }
+
+        .table tbody td:first-child {
+            max-width: 150px;
+        }
+
+        .table tbody td:nth-child(2) {
+            min-width: 200px;
+            text-align: right;
+            padding-right: 35px;
+        }
     </style>
 @endsection
 
 @section('content')
-<div class="container panel panel-default">
+<div class="container panel panel-default" style="margin-bottom: 80px;">
     {{-- <div class="panel-heading">
         <h3>Debt. from <strong>{{ $debt->user->shop->shop_name }}</strong>
         to <strong>{{ $debt->farmer->first_name }} {{ $debt->farmer->last_name }}</strong></h3>
@@ -34,11 +48,11 @@
 
         <div class="row" style="margin-bottom: 10px;">
             <div class="col-md-5">
-                <strong>Total Amount:</strong> <span class="mono"> lol implement Transactions FIRST XD</span>
+                <strong>Total Amount:</strong> <span class="mono"> {{ number_format($debt->transactions->first()->amount) }}</span>
             </div>
             
             <div class="col-md-4">
-                <strong>Amount Remaining</strong>: <span class="mono"> {{ $debt->amount }}
+                <strong>Amount Remaining</strong>: <span class="mono"> {{ number_format($debt->amount) }}
             </div>
 
             <div class="col-md-3">
@@ -105,8 +119,39 @@
             </div>
         </div>
         <hr>
-        <h4>Transaction Details</h4>
-        <div class="row">
+        <h4>Transaction History</h4>
+        <div style="max-width: 960px; margin: 0 auto;">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody style="font-family: monospace">
+                @foreach ($debt->transactions->all() as $transaction)
+                    <tr>
+                        <td> {{ date('(D)j-M-Y', strtotime($transaction->created_at)) }} </td>
+                        <td>
+                            {{ $loop->first 
+                                ? number_format($transaction->amount)
+                                : number_format($transaction->amount - $lastAmount )
+                            }}
+                        </td>
+                        <td> {{ $loop->first ? "Amount of Debt. issued." : "" }}</td>
+                    </tr>
+                    @php
+                        $lastAmount = $transaction->amount;
+                    @endphp
+                @endforeach
+                    <tr>
+                        <td>Amount Remaining: </td>
+                        <td> {{ $debt->amount == 0 ? "Nill" : number_format($debt->amount) }} </td>
+                        <td></td>
+                    </tr>
+            </tbody>
+        </table>
         </div>
     </div>
 </div>

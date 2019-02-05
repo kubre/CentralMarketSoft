@@ -24,4 +24,4 @@
  - [x] Add comment field in Debt. add screen
  - [x] Improve Searching
  - [x] Debt. Details screen 
- - [ ] Transcations
+ - [x] Transcations

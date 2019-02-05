@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Debit;
 use App\Farmer;
+use App\Transaction;
 
 class DebitsController extends Controller
 {
@@ -57,20 +58,32 @@ class DebitsController extends Controller
             ])->withInput();
         }
 
+        $amountRounded = round($data['amount'], 2);
+
         $debt = new Debit();
-        $debt->amount = round($data['amount'], 2);
+        $debt->amount = $amountRounded;
         $debt->comment = $data['comment'];
         $debt->farmer_id = $farmer->id;
         $debt->user_id = Auth::user()->id;
 
         if ($debt->save()) {
-            return back()->with('messages', [
-                "success" => "Debit issued successfully! Please search and make sure it exists in Search Debt. Screen"
-            ]);
+
+            // Make transaction <- First transaction
+            $transaction = new Transaction();
+            $transaction->debit_id = $debt->id;
+            $transaction->amount = $amountRounded;
+            if ($transaction->save()) {
+                return back()->with('messages', [
+                "success" => "Debt. issued successfully! Please search and make sure it exists in Search Debt. Screen"
+                ]);
+            }
+            // As transaction failed delete debt. also
+            $debt->destroy();
         }
 
+        // As good old days :) make user panic with error message; lol those exclamations
         return back()->withErrors([
-            "problem" => "Problem while entering data! Contact Administrator."
+            "problem" => "Problem! Problem! Creating debt. failed! Contact Administrator!"
         ])->withInput();
     }
 
@@ -117,19 +130,32 @@ class DebitsController extends Controller
             "comment" => "nullable|max:255"
         ]);
 
+        $amountRounded = round($data['amount'], 2);
+
         $debt = Debit::find($id);
-        $debt->amount = round($data['amount'], 2);
+        // If anything goes wrong we got amount
+        $amountBefore = $debt->amount;
+        $debt->amount = $amountRounded;
         $debt->comment = $data['comment'];
 
-        if (!$debt->save()) {
-            return back()->withErrors([
-                "problem" => "Problem while entering Debt! Contact Administrator."
-            ])->withInput();
+        if ($debt->save()) {
+
+            // Make transaction <- Newer Transaction serves as record
+            $transaction = new Transaction();
+            $transaction->debit_id = $debt->id;
+            $transaction->amount = $amountRounded;
+            if ($transaction->save()) {
+                return back()->with('messages', [
+                "success" => "Debt. issued successfully! Please search and make sure it exists in Search Debt. Screen"
+                ]);
+            }
+            // As transaction failed, Make no changes to debt. and return with errors
+            $debt->amount = $amountBefore;
+            $debt->save();
         }
-        
-        return back()->with('messages', [
-                    "success" => "Debt. updated successfully! Please search and make sure it exists in Search Debt. Screen."
-            ]);
+        return back()->withErrors([
+                    "problem" => "Problem while updating Debt.! Contact Administrator!"
+                ])->withInput();
     }
 
     /**
