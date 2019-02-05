@@ -44,7 +44,8 @@ class SearchDebitsController extends Controller
                 // Check if it even returned anything
                 if ($farmers->count() > 0) {
                     foreach ($farmers as $farmer) {
-                        foreach ($farmer->debits->all() as $debit) {
+                        $descByAmount = $farmer->debits->sortByDesc('amount');
+                        foreach ($descByAmount->all() as $debit) {
                             // if ($debit->user_id === Auth::user()->id) {
                             // $editCell = "<a class='btn btn-primary' href='/debit/$debit->id/edit'>Edit</a>";
                             // }

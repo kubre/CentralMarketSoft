@@ -52,7 +52,7 @@
             </div>
             
             <div class="col-md-4">
-                <strong>Amount Remaining</strong>: <span class="mono"> {{ number_format($debt->amount) }}
+                <strong>Amount Remaining</strong>: <span class="mono"> {{ $debt->amount == 0 ? "Nill" : number_format($debt->amount) }}
             </div>
 
             <div class="col-md-3">

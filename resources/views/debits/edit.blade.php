@@ -6,8 +6,11 @@
 
     @include('layouts.messages')
 
-    <div class="panel-heading">
-        <h4>Edit Debt. for {{ $debt->farmer->first_name }} {{ $debt->farmer->last_name }}</h4>
+    <div class="panel-heading row">
+        <h4 class="col-md-8">Edit Debt. for {{ $debt->farmer->first_name }} {{ $debt->farmer->last_name }}</h4>
+        <span class="col-md-2 col-md-offset-2">
+            <a class='btn btn-primary btn-block' style="margin-top: 5px" href='/debit/{{$debt->id}}'>View Details</a>
+        </span>
     </div>
     <div class="panel-body">
 
