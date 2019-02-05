@@ -96,6 +96,9 @@ class DebitsController extends Controller
     public function show($id)
     {
         $debt = Debit::find($id);
+        if (is_null($debt)) {
+            return redirect('\dashboard');
+        }
         return view('debits.show')->with('debt', $debt);
     }
 
