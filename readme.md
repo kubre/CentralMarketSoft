@@ -21,5 +21,6 @@
  - [x] Send back to login after register
  - [x] Succes message - farmer.create
  - [x] debt.edit minus amount instead of new Amount
- - [ ] DOB - Village
+ - [ ] Add comment field in Debt. add screen
+ - [ ] Improve Searching
  - [ ] Transcations

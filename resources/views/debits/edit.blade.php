@@ -25,6 +25,21 @@
                 </div>
             </div>
 
+            <div class="form-group{{ $errors->has('comment') ? ' has-error' : '' }}">
+                <label for="comment" class="col-md-4 control-label">Comment</label>
+
+                <div class="col-md-6">
+                    <input id="comment" type="text" class="form-control" name="comment" maxlength="255" value="{{ $debt->comment or old('comment') }}">
+
+                    @if ($errors->has('comment'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('comment') }}</strong>
+                    </span>
+                    @endif
+                </div>
+            </div>
+            <span class="help-block text-center">Comment is Optional.</span>
+
             <div class="row">
                 <div class="col-sm-4">Old Amount</div>
                 <div class="col-sm-5">Amount to Subtract</div>
@@ -53,7 +68,6 @@
                     <input id="amount" name="amount" type="hidden">
                 </div>
             </div>
- 
 
             <hr>
 

@@ -7,7 +7,7 @@
     @include('layouts.messages')
 
     <div class="panel-heading">
-        <h4>Issue Debt. to Farmer</h4> 
+        <h4>Issue Debt. to Farmer</h4>
     </div>
     <div class="panel-body">
 
@@ -18,8 +18,8 @@
                 <label for="identity" class="col-md-4 control-label">Addhar/PAN</label>
 
                 <div class="col-md-6">
-                    <input id="identity" type="text" class="form-control" name="identity" value="{{ old('identity') }}" required
-                        autofocus>
+                    <input id="identity" type="text" class="form-control" name="identity" value="{{ old('identity') }}"
+                        required autofocus>
 
                     @if ($errors->has('identity'))
                     <span class="help-block">
@@ -33,7 +33,8 @@
                 <label for="amount" class="col-md-4 control-label">Amount</label>
 
                 <div class="col-md-6">
-                    <input id="amount" type="text" class="form-control" name="amount" value="{{ old('amount') }}" required>
+                    <input id="amount" style="font-family: monospace;" type="text" class="form-control" name="amount" value="{{ old('amount') }}"
+                        required>
 
                     @if ($errors->has('amount'))
                     <span class="help-block">
@@ -42,7 +43,22 @@
                     @endif
                 </div>
             </div>
-            
+
+            <div class="form-group{{ $errors->has('comment') ? ' has-error' : '' }}">
+                <label for="comment" class="col-md-4 control-label">Comment</label>
+
+                <div class="col-md-6">
+                    <input id="comment" type="text" class="form-control" name="comment" maxlength="255" value="{{ old('comment') }}">
+
+                    @if ($errors->has('comment'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('comment') }}</strong>
+                    </span>
+                    @endif
+                </div>
+            </div>
+            <span class="help-block text-center">Comment is Optional.</span>
+
             <hr>
 
             <div class="row">

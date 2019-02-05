@@ -43,7 +43,8 @@ class DebitsController extends Controller
     {
         $data = $request->validate([
             "identity" => "required|min:10|max:12",
-            "amount" => "required|numeric"
+            "amount" => "required|numeric",
+            "comment" => "nullable|max:255",
         ]);
 
         $farmer = Farmer::where('aadhar', $data['identity'])
@@ -58,6 +59,7 @@ class DebitsController extends Controller
 
         $debt = new Debit();
         $debt->amount = round($data['amount'], 2);
+        $debt->comment = $data['comment'];
         $debt->farmer_id = $farmer->id;
         $debt->user_id = Auth::user()->id;
 
@@ -110,17 +112,20 @@ class DebitsController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->validate([
-            "amount" => "required|numeric"
+            "amount" => "required|numeric",
+            "comment" => "nullable|max:255"
         ]);
 
         $debt = Debit::find($id);
         $debt->amount = round($data['amount'], 2);
+        $debt->comment = $data['comment'];
 
         if (!$debt->save()) {
             return back()->withErrors([
                 "problem" => "Problem while entering Debt! Contact Administrator."
             ])->withInput();
         }
+        
         return back()->with('messages', [
                     "success" => "Debt. updated successfully! Please search and make sure it exists in Search Debt. Screen."
             ]);
