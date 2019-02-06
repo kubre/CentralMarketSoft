@@ -25,3 +25,6 @@
  - [x] Improve Searching
  - [x] Debt. Details screen 
  - [x] Transcations
+
+## Some features to enhance experience
+ - [x] My Shop Section serve as dashboard

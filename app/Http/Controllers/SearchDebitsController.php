@@ -19,7 +19,6 @@ class SearchDebitsController extends Controller
         // Response variables to be sent
         $count = 0;
         $htmlTable = "";
-        // $editCell = "Not Authorised";
 
         // Search Fields
         $first_name = $request->input('first_name');
@@ -35,7 +34,6 @@ class SearchDebitsController extends Controller
                 // Fetch Farmers as per search criteria
                 $farmers = Farmer::where('first_name', 'like', "$first_name%")
                                 ->where('last_name', 'like', "$last_name%")
-                                // ->where('village', 'like', "$village%")
                                 ->where('mobile', 'like', "$mobile%")
                                 ->where('aadhar', 'like', "$aadhar%")
                                 ->where('pan', 'like', "$pan%")
@@ -46,21 +44,16 @@ class SearchDebitsController extends Controller
                     foreach ($farmers as $farmer) {
                         $descByAmount = $farmer->debits->sortByDesc('amount');
                         foreach ($descByAmount->all() as $debit) {
-                            // if ($debit->user_id === Auth::user()->id) {
-                            // $editCell = "<a class='btn btn-primary' href='/debit/$debit->id/edit'>Edit</a>";
-                            // }
-
                             $htmlTable .= "
                                 <tr>
                                     <td> $farmer->first_name $farmer->last_name </td> 
                                     <td> $farmer->aadhar / $farmer->pan </td> 
                                     <td> {$farmer->address->block_no}, {$farmer->address->village}, {$farmer->address->city} </td> 
-                                    <td> {$debit->user->shop->shop_name} </td> 
-                                    <td> $debit->amount </td>
+                                    <td> {$debit->user->shop->shop_name}, {$debit->user->shop->address->village} </td> 
+                                    <td> Rs. $debit->amount </td>
                                     <td> <a class='btn btn-info' href='/debit/$debit->id'>View</a> </td>
                                 </tr>";
                         }
-                        // $editCell = "Not Authorised";
                     }
                 } else {
                     $htmlTable = "<tr><td colspan='6'>No Match Found!</td></tr>";

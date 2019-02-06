@@ -13,7 +13,12 @@
 
 Route::get('/', 'PagesController@index');
 
+
 Auth::routes();
+
+Route::get('/myshop', 'DashboardController@myShop');
+
+Route::post('/myshop/debt/search', 'DashboardController@searchDebt');
 
 Route::post('/password/reset/verify', 'ResetPasswordController@verify')->name('reset.verify');
 
