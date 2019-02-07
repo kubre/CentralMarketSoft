@@ -32,8 +32,8 @@ class SearchDebitsController extends Controller
             if (!(empty($first_name) && empty($last_name) && empty($mobile) && empty($aadhar) && empty($pan))) {
 
                 // Fetch Farmers as per search criteria
-                $farmers = Farmer::where('first_name', 'like', "$first_name%")
-                                ->where('last_name', 'like', "$last_name%")
+                $farmers = Farmer::where('first_name', 'like', "%$first_name%")
+                                ->where('last_name', 'like', "%$last_name%")
                                 ->where('mobile', 'like', "$mobile%")
                                 ->where('aadhar', 'like', "$aadhar%")
                                 ->where('pan', 'like', "$pan%")
