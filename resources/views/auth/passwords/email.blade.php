@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
+                <div class="panel-heading">{{__('forms.resetpassword')}}</div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -18,7 +18,7 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('mobile') ? ' has-error' : '' }}">
-                            <label for="mobile" class="col-md-4 control-label">Registered Mobile no.</label>
+                            <label for="mobile" class="col-md-4 control-label">{{__('forms.regdmobile')}}</label>
 
                             <div class="col-md-6">
                                 <input id="mobile" type="text" class="form-control" name="mobile" value="{{ old('mobile') }}" required>
@@ -32,7 +32,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('aadhar') ? ' has-error' : '' }}">
-                            <label for="aadhar" class="col-md-4 control-label">Aadhar No.</label>
+                            <label for="aadhar" class="col-md-4 control-label">{{__('forms.aadharno')}}</label>
 
                             <div class="col-md-6">
                                 <input id="mobile" type="text" class="form-control" name="aadhar" value="{{ old('aadhar') }}" required>
@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('pan') ? ' has-error' : '' }}">
-                            <label for="pan" class="col-md-4 control-label">PAN No.</label>
+                            <label for="pan" class="col-md-4 control-label">{{__('forms.panno')}}</label>
 
                             <div class="col-md-6">
                                 <input id="pan" type="text" class="form-control" name="pan" value="{{ old('pan') }}" required>
@@ -62,7 +62,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Send Password Reset Link
+                                    {{__('forms.sendpasswordlink')}}
                                 </button>
                             </div>
                         </div>

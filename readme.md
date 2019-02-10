@@ -30,4 +30,4 @@
  - [x] My Shop Section serve as dashboard
  - [x] Set Up Localization
  - [ ] Views in marathi
- - [ ] Error messagaes in marathi 
+ - [x] Error messagaes in marathi 

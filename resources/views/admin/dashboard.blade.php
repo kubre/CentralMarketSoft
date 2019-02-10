@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container panel">
-    <div class="panel-heading">Dashboard</div>
+    <div class="panel-heading"> {{ __('forms.adminsection') }} </div>
     <div class="panel-body">
 
         <div class="row">
@@ -15,7 +15,7 @@
                 placeholder="Search by Mobile No.">
 
                 <span class="input-group-btn">
-                    <button type="submit" class="btn btn-default">Search</button>
+                    <button type="submit" class="btn btn-default">{{ __('forms.search') }}</button>
                 </span>
             </div>
         </form>
@@ -24,8 +24,8 @@
         <p>
             <!-- No of users found -->
             @isset($found)
-                No. of Registered users is {{ count($users) }}
-                with mobile no. like <strong>{{ $mobile }}</strong>.
+                {{ __('forms.usernumber') }} {{ count($users) }}
+                {{__('forms.withmobile') }} <strong>{{ $mobile }}</strong>.
             @endisset
         </p>
 
@@ -33,10 +33,10 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Shop Name</th>
-                    <th>Mobile no.</th>
-                    <th>Action</th>
+                    <th>{{__('forms.name') }}</th>
+                    <th>{{__('forms.shopname') }}</th>
+                    <th>{{__('forms.mobile') }}</th>
+                    <th>{{__('forms.action') }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -50,24 +50,24 @@
                         <form action="/admin/user/{{ $user->id }}/disapprove" method="post">
                             {{ @csrf_field() }}
                             {{ @method_field('PUT') }}
-                            <button type="submit" class="btn btn-danger">Remove Approval</button>
+                            <button type="submit" class="btn btn-danger">{{__('forms.removeapproval') }}</button>
                         </form>
                         @else
                         <form action="/admin/user/{{ $user->id }}/approve" method="post">
                             {{ @csrf_field() }}
                             {{ @method_field('PUT') }}
-                            <button type="submit" class="btn btn-success">Approve</button>
+                            <button type="submit" class="btn btn-success">{{__('forms.approval') }}</button>
                         </form>
                         @endif
                     </td>
                 @empty
                     @isset($found)
                     <td colpsan="4">
-                        No users found with mobile no. {{ $mobile }}
+                        {{__('forms.nouserfound') }} {{ $mobile }}
                     </td>
                     @else
                     <td colpsan="4">
-                        No users are registered
+                        {{__('forms.nouserreg')}}
                     </td>
                     @endisset
                 </tr>

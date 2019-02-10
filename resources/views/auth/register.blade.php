@@ -5,14 +5,14 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+                <div class="panel-heading">{{__('forms.register')}}</div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Prop Name</label>
+                            <label for="name" class="col-md-4 control-label">{{__('forms.propname')}}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('mobile') ? ' has-error' : '' }}">
-                            <label for="mobile" class="col-md-4 control-label">Mobile No.</label>
+                            <label for="mobile" class="col-md-4 control-label">{{__('forms.mobile')}}</label>
 
                             <div class="col-md-6">
                                 <input id="mobile" type="text" class="form-control" maxlength="10" minlength="10" name="mobile" value="{{ old('mobile') }}" required>
@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+                            <label for="password" class="col-md-4 control-label">{{__('forms.password')}}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password" required>
@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                            <label for="password-confirm" class="col-md-4 control-label">{{__('forms.confpassword')}}</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
@@ -63,10 +63,10 @@
 
                         <hr>
 
-                        <h4>Shop Details</h4>
+                        <h4>{{__('forms.shopdetails')}}</h4>
 
                         <div class="form-group{{ $errors->has('shop_name') ? ' has-error' : '' }}">
-                            <label for="shop_name" class="col-md-4 control-label">shopname</label>
+                            <label for="shop_name" class="col-md-4 control-label">{{__('forms.shopname')}}</label>
 
                             <div class="col-md-6">
                                 <input id="shop_name" type="text" class="form-control" name="shop_name" value="{{ old('shop_name') }}" required>
@@ -80,7 +80,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('dob') ? ' has-error' : '' }}">
-                            <label for="dob" class="col-md-4 control-label">dob</label>
+                            <label for="dob" class="col-md-4 control-label">{{__('forms.dob')}}</label>
 
                             <div class="col-md-6">
                                 <input id="dob" type="date" class="form-control" name="dob" value="{{ old('dob') }}" required>
@@ -94,7 +94,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('shop_do') ? ' has-error' : '' }}">
-                            <label for="shop_do" class="col-md-4 control-label">shop_do</label>
+                            <label for="shop_do" class="col-md-4 control-label">{{__('forms.shopdo')}}</label>
 
                             <div class="col-md-6">
                                 <input id="shop_do" type="date" class="form-control" name="shop_do" value="{{ old('shop_do') }}" required>
@@ -108,7 +108,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('seed_lic') ? ' has-error' : '' }}">
-                            <label for="seed_lic" class="col-md-4 control-label">shop_lic</label>
+                            <label for="seed_lic" class="col-md-4 control-label">{{__('forms.seedlic')}}</label>
 
                             <div class="col-md-6">
                                 <input id="seed_lic" type="text" class="form-control" name="seed_lic" value="{{ old('seed_lic') }}">
@@ -122,7 +122,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('seed_exp') ? ' has-error' : '' }}">
-                            <label for="seed_exp" class="col-md-4 control-label">shop_exp</label>
+                            <label for="seed_exp" class="col-md-4 control-label">{{__('forms.seedexp')}}</label>
 
                             <div class="col-md-6">
                                 <input id="seed_exp" type="date" class="form-control" name="seed_exp" value="{{ old('seed_exp') }}">
@@ -137,7 +137,7 @@
 
 
                         <div class="form-group{{ $errors->has('fert_lic') ? ' has-error' : '' }}">
-                            <label for="fert_lic" class="col-md-4 control-label">fert_lic</label>
+                            <label for="fert_lic" class="col-md-4 control-label">{{__('forms.fertlic')}}</label>
 
                             <div class="col-md-6">
                                 <input id="fert_lic" type="text" class="form-control" name="fert_lic" value="{{ old('fert_lic') }}">
@@ -151,7 +151,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('fert_exp') ? ' has-error' : '' }}">
-                            <label for="fert_exp" class="col-md-4 control-label">fert_exp</label>
+                            <label for="fert_exp" class="col-md-4 control-label">{{__('forms.fertexp')}}</label>
 
                             <div class="col-md-6">
                                 <input id="fert_exp" type="date" class="form-control" name="fert_exp" value="{{ old('fert_exp') }}">
@@ -165,7 +165,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('pest_lic') ? ' has-error' : '' }}">
-                            <label for="pest_lic" class="col-md-4 control-label">pest_lic</label>
+                            <label for="pest_lic" class="col-md-4 control-label">{{__('forms.pestlic')}}</label>
 
                             <div class="col-md-6">
                                 <input id="pest_lic" type="text" class="form-control" name="pest_lic" value="{{ old('pest_lic') }}">
@@ -179,7 +179,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('pest_exp') ? ' has-error' : '' }}">
-                            <label for="pest_exp" class="col-md-4 control-label">pest_exp</label>
+                            <label for="pest_exp" class="col-md-4 control-label">{{__('forms.pestexp')}}</label>
 
                             <div class="col-md-6">
                                 <input id="pest_exp" type="date" class="form-control" name="pest_exp" value="{{ old('pest_exp') }}">
@@ -193,7 +193,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('shop_act') ? ' has-error' : '' }}">
-                            <label for="shop_act" class="col-md-4 control-label">shop_act</label>
+                            <label for="shop_act" class="col-md-4 control-label">{{__('forms.shoplic')}}</label>
 
                             <div class="col-md-6">
                                 <input id="shop_act" type="text" class="form-control" name="shop_act" value="{{ old('shop_act') }}">
@@ -207,7 +207,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('shop_exp') ? ' has-error' : '' }}">
-                            <label for="shop_exp" class="col-md-4 control-label">shop_exp</label>
+                            <label for="shop_exp" class="col-md-4 control-label">{{__('forms.shopexp')}}</label>
 
                             <div class="col-md-6">
                                 <input id="shop_exp" type="date" class="form-control" name="shop_exp" value="{{ old('shop_exp') }}">
@@ -221,7 +221,7 @@
                         </div>
                         
                         <div class="form-group{{ $errors->has('shop_contact') ? ' has-error' : '' }}">
-                            <label for="shop_contact" class="col-md-4 control-label">shop_contact</label>
+                            <label for="shop_contact" class="col-md-4 control-label">{{__('forms.shopcontact')}}</label>
 
                             <div class="col-md-6">
                                 <input id="shop_contact" type="text" class="form-control" name="shop_contact" value="{{ old('shop_contact') }}">
@@ -235,7 +235,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('gst') ? ' has-error' : '' }}">
-                            <label for="gst" class="col-md-4 control-label">gst</label>
+                            <label for="gst" class="col-md-4 control-label">{{__('forms.gst')}}</label>
 
                             <div class="col-md-6">
                                 <input id="gst" type="text" class="form-control" name="gst" value="{{ old('gst') }}">
@@ -249,7 +249,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('pan') ? ' has-error' : '' }}">
-                            <label for="pan" class="col-md-4 control-label">pan</label>
+                            <label for="pan" class="col-md-4 control-label">{{__('forms.panno')}}</label>
 
                             <div class="col-md-6">
                                 <input id="pan" type="text" class="form-control" name="pan" maxlength="10" minlength="10" value="{{ old('pan') }}">
@@ -263,7 +263,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('aadhar') ? ' has-error' : '' }}">
-                            <label for="aadhar" class="col-md-4 control-label">aadhar</label>
+                            <label for="aadhar" class="col-md-4 control-label">{{__('forms.aadharno')}}</label>
 
                             <div class="col-md-6">
                                 <input id="aadhar" type="text" class="form-control" name="aadhar" minlength="12" maxlength="12" value="{{ old('aadhar') }}">
@@ -277,7 +277,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('block_no') ? ' has-error' : '' }}">
-                            <label for="block_no" class="col-md-4 control-label">shop_no</label>
+                            <label for="block_no" class="col-md-4 control-label">{{__('forms.shopadd')}}</label>
 
                             <div class="col-md-6">
                                 <input id="block_no" type="text" class="form-control" name="block_no" value="{{ old('block_no') }}">
@@ -291,7 +291,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('village') ? ' has-error' : '' }}">
-                            <label for="village" class="col-md-4 control-label">village</label>
+                            <label for="village" class="col-md-4 control-label">{{__('forms.village')}}</label>
 
                             <div class="col-md-6">
                                 <input id="village" type="text" class="form-control" name="village" value="{{ old('village') }}">
@@ -305,7 +305,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
-                            <label for="city" class="col-md-4 control-label">city</label>
+                            <label for="city" class="col-md-4 control-label">{{__('forms.city')}}</label>
 
                             <div class="col-md-6">
                                 <input id="city" type="text" class="form-control" name="city" value="{{ old('city') }}">
@@ -319,7 +319,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('district') ? ' has-error' : '' }}">
-                            <label for="district" class="col-md-4 control-label">district</label>
+                            <label for="district" class="col-md-4 control-label">{{__('forms.district')}}</label>
 
                             <div class="col-md-6">
                                 <input id="district" type="text" class="form-control" name="district" value="{{ old('district') }}">
@@ -335,7 +335,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Register
+                                    {{__('forms.register')}}
                                 </button>
                             </div>
                         </div>
