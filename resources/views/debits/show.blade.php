@@ -10,7 +10,7 @@
         }
 
         .mono {
-            font-family: monospace;
+            font-family: 'lucida console', ubuntu mono, monospace !important;
             margin-left: 10px;
         }
 
@@ -20,11 +20,18 @@
 
         .table tbody td:first-child {
             max-width: 150px;
+            padding: 10px;
         }
 
         .table tbody td:nth-child(2) {
             min-width: 200px;
             text-align: right;
+            padding-right: 35px;
+        }
+
+        .table tbody td:nth-child(3) {
+            min-width: 100px;
+            text-align: center;
             padding-right: 35px;
         }
     </style>
@@ -37,7 +44,7 @@
         to <strong>{{ $debt->farmer->first_name }} {{ $debt->farmer->last_name }}</strong></h3>
     </div> --}}
     <div class="panel-heading row">
-        <h4 class="col-md-3">Debt. Details</h4>
+        <h4 class="col-md-3"> {{ __('user.debtdetails') }} </h4>
         @if(Auth::user()->id === $debt->user->id)
             <span class="col-md-3 col-md-offset-6">
                 <a class='btn btn-primary btn-block' style="margin-top: 5px" href='/debit/{{$debt->id}}/edit'>Update</a>
@@ -48,106 +55,106 @@
 
         <div class="row" style="margin-bottom: 10px;">
             <div class="col-md-5">
-                <strong>Total Amount:</strong> <span class="mono"> {{ number_format($debt->transactions->first()->amount) }}</span>
+                <strong>{{ __('user.amountissued') }}</strong>: <span class="mono"> {{ number_format($debt->transactions->first()->amount) }} {{ __('user.inr') }}</span>
             </div>
             
             <div class="col-md-4">
-                <strong>Amount Remaining</strong>: <span class="mono"> {{ $debt->amount == 0 ? "Nill" : number_format($debt->amount) }}
+                <strong>{{ __('user.remainingamount') }}</strong>: <span class="mono"> {{ $debt->amount == 0 ? __('user.nill') : number_format($debt->amount) }} {{ __('user.inr') }}
             </div>
 
             <div class="col-md-3">
-                <strong>Date:</strong> <span class="mono">{{ date('(D)j-M-Y', strtotime($debt->created_at)) }}</span>
+                <strong> {{ __('user.date') }} :</strong> <span class="mono">{{ date('j/M/Y', strtotime($debt->created_at)) }}</span>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-1"><strong>Comment:</strong></div>
-            <div class="col-md-10 mono" style="padding-left: 20px;">{{ $debt->comment ?: "No Comment!" }}</div>
+            <div class="col-md-1"><strong> {{ __('user.comment') }} :</strong></div>
+            <div class="col-md-10 mono" style="margin-left: -18px;">{{ $debt->comment ?: "--" }}</div>
         </div>
         <hr>
 
         <div class="row">
             <div class="col-md-6">
-                <h4>Shop Details: </h4>
+                <h4>{{ __('user.shop') }}: </h4>
                 <hr>
                 <ul>
                     <li class="row">
-                        <strong class="col-md-3">Shop:</strong>
+                        <strong class="col-md-3"> {{ __('user.shopname') }}:</strong>
                         <div class="col-md-9">{{ $debt->user->shop->shop_name }}</div>
                     </li>
 
                     <li class="row">
-                        <strong class="col-md-3">Owner:</strong>
+                        <strong class="col-md-3"> {{ __('user.owner') }}:</strong>
                         <div class="col-md-9"> {{ $debt->user->name }} </div>
                     </li>
                     <li class="row">
-                        <strong class="col-md-3">Address:</strong>
+                        <strong class="col-md-3"> {{ __('user.address') }}:</strong>
                         <div class="col-md-9">
-                            Shop No.{{ $debt->user->shop->address->block_no }},<br>
+                            {{ __('user.shopno') }} {{ $debt->user->shop->address->block_no }},<br>
                             {{ $debt->user->shop->address->village }},
                             {{ $debt->user->shop->address->city }},<br>
-                            Dist. {{ $debt->user->shop->address->district }}
+                            {{ __('forms.district') }}, {{ $debt->user->shop->address->district }}
                         </div>
                     </li>
                 </ul>
             </div>
             <div class="col-md-6">
-                <h4>Farmer's Details</h4>
+                <h4> {{ __('user.farmersdetails') }}</h4>
                 <hr>
                 <ul>
                     <li class="row">
-                        <strong class="col-md-3">Name:</strong>
+                        <strong class="col-md-3">{{ __('user.fullname') }}:</strong>
                         <div class="col-md-9">{{ $debt->farmer->first_name }} {{ $debt->farmer->last_name }}</div>
                     </li>
                     <li class="row">
-                        <strong class="col-md-3">Aadhar:</strong>
+                        <strong class="col-md-3">{{ __('forms.aadharno') }}:</strong>
                         <div class="col-md-9">{{ $debt->farmer->aadhar }}</div>
                     </li>
                     <li class="row">
-                        <strong class="col-md-3">PAN:</strong>
+                        <strong class="col-md-3">{{ __('forms.panno') }}:</strong>
                         <div class="col-md-9">{{ $debt->farmer->pan }}</div>
                     </li>
                     <li class="row">
-                        <strong class="col-md-3">Address:</strong>
+                        <strong class="col-md-3">{{ __('user.address') }}:</strong>
                         <div class="col-md-9">
-                            House No.{{ $debt->farmer->address->block_no }},<br>
+                             {{ __('forms.houseno') }} {{ $debt->farmer->address->block_no }},<br>
                             {{ $debt->farmer->address->village }},
                             {{ $debt->farmer->address->city }},<br>
-                            Dist. {{ $debt->farmer->address->district }}
+                            {{ __('forms.district') }}, {{ $debt->farmer->address->district }}
                     </li>
                 </ul>
             </div>
         </div>
         <hr>
-        <h4>Transaction History</h4>
+        <h4> {{ __('user.transaction') }} {{ __('user.details') }}</h4>
         <div style="max-width: 960px; margin: 0 auto;">
         <table class="table">
             <thead>
                 <tr>
-                    <th>Date</th>
-                    <th>Amount</th>
-                    <th>Details</th>
+                    <th> {{ __('user.date') }} </th>
+                    <th> {{ __('user.amount') }} </th>
+                    <th> {{ __('user.details') }} </th>
                 </tr>
             </thead>
             <tbody style="font-family: monospace">
                 @foreach ($debt->transactions->all() as $transaction)
                     <tr>
-                        <td> {{ date('(D)j-M-Y', strtotime($transaction->created_at)) }} </td>
-                        <td>
+                        <td> {{ date('j/M/Y', strtotime($transaction->created_at)) }} </td>
+                        <td class="mono">
                             {{ $loop->first 
                                 ? number_format($transaction->amount)
                                 : number_format($transaction->amount - $lastAmount )
                             }}
                         </td>
-                        <td> {{ $loop->first ? "Amount of Debt. issued." : "" }}</td>
+                        <td> {{ $loop->first ? __('user.amountissued') : "" }}</td>
                     </tr>
                     @php
                         $lastAmount = $transaction->amount;
                     @endphp
                 @endforeach
                     <tr>
-                        <td>Amount Remaining: </td>
-                        <td> {{ $debt->amount == 0 ? "Nill" : number_format($debt->amount) }} </td>
+                        <td>{{ __('user.remainingamount')  }}: </td>
+                        <td class="mono"> {{ $debt->amount == 0 ? "Nill" : number_format($debt->amount) }} </td>
                         <td></td>
                     </tr>
             </tbody>

@@ -3,7 +3,7 @@
 
 return [
 
-    'firstname' => 'स्वतःचे नाव',
+    'firstname' => 'पहिले नाव',
     'lastname' => 'शेवटचे नाव',
     'search' => 'शोधा',
     'usernumber' => 'नोंदणीकृत वापरकर्त्यांची संख्या',
@@ -50,5 +50,6 @@ return [
     'logout' => 'बाहेर पडा',
     'login' => 'कार्य विभाग',
     'register' => 'नोदंणी करा',
-    
+    'lightbill' => 'लाईट बिल',
+    'houseno' => 'घर क्र.',
 ];

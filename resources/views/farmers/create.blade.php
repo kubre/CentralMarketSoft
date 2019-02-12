@@ -4,7 +4,7 @@
 
 <div class="container panel panel-default">
     <div class="panel-heading">
-        <h4>Register Farmer to Central a Database</h4>
+        <h4> {{ __('user.registerfarmer') }} </h4>
     </div>
     <div class="panel-body">
         
@@ -14,7 +14,7 @@
             {{ csrf_field() }}
 
             <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
-                <label for="first_name" class="col-md-4 control-label">First Name</label>
+                <label for="first_name" class="col-md-4 control-label"> {{ __('forms.firstname') }} </label>
 
                 <div class="col-md-6">
                     <input id="first_name" type="text" class="form-control" name="first_name" value="{{ old('first_name') }}"
@@ -29,7 +29,7 @@
             </div>
 
             <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
-                <label for="last_name" class="col-md-4 control-label">Last Name</label>
+                <label for="last_name" class="col-md-4 control-label"> {{ __('forms.lastname') }} </label>
 
                 <div class="col-md-6">
                     <input id="last_name" type="text" class="form-control" name="last_name" value="{{ old('last_name') }}"
@@ -44,7 +44,7 @@
             </div>
 
             <div class="form-group{{ $errors->has('mobile') ? ' has-error' : '' }}">
-                <label for="mobile" class="col-md-4 control-label">Mobile No.</label>
+                <label for="mobile" class="col-md-4 control-label"> {{ __('forms.mobile') }} </label>
 
                 <div class="col-md-6">
                     <input id="mobile" type="text" class="form-control" maxlength="10" maxlength="10" name="mobile"
@@ -59,7 +59,7 @@
             </div>
 
             <div class="form-group{{ $errors->has('dob') ? ' has-error' : '' }}">
-                <label for="dob" class="col-md-4 control-label">dob</label>
+                <label for="dob" class="col-md-4 control-label"> {{ __('forms.dob') }} </label>
 
                 <div class="col-md-6">
                     <input id="dob" type="date" class="form-control" name="dob" value="{{ old('dob') }}" required>
@@ -73,7 +73,7 @@
             </div>
 
             <div class="form-group{{ $errors->has('aadhar') ? ' has-error' : '' }}">
-                <label for="aadhar" class="col-md-4 control-label">Aadhar No.</label>
+                <label for="aadhar" class="col-md-4 control-label"> {{ __('forms.aadharno') }} </label>
 
                 <div class="col-md-6">
                     <input id="aadhar" type="text" class="form-control" maxlength="12" minlength="12" name="aadhar"
@@ -88,7 +88,7 @@
             </div>
 
             <div class="form-group{{ $errors->has('pan') ? ' has-error' : '' }}">
-                <label for="pan" class="col-md-4 control-label">PAN</label>
+                <label for="pan" class="col-md-4 control-label">  {{ __('forms.panno') }} </label>
 
                 <div class="col-md-6">
                     <input id="pan" type="text" class="form-control" maxlength="10" minlength="10" name="pan" value="{{ old('pan') }}"
@@ -103,7 +103,7 @@
             </div>
 
             <div class="form-group{{ $errors->has('light_bill') ? ' has-error' : '' }}">
-                <label for="light_bill" class="col-md-4 control-label">Light Bill</label>
+                <label for="light_bill" class="col-md-4 control-label"> {{ __('forms.lightbill') }} </label>
 
                 <div class="col-md-6">
                     <input id="light_bill" type="text" class="form-control" name="light_bill" value="{{ old('light_bill') }}"
@@ -118,7 +118,7 @@
             </div>
             <!-- Address Section -->
             <div class="form-group{{ $errors->has('block_no') ? ' has-error' : '' }}">
-                <label for="block_no" class="col-md-4 control-label">shop_no</label>
+                <label for="block_no" class="col-md-4 control-label"> {{ __('forms.houseno') }} </label>
 
                 <div class="col-md-6">
                     <input id="block_no" type="text" class="form-control" name="block_no" value="{{ old('block_no') }}">
@@ -132,7 +132,7 @@
             </div>
 
             <div class="form-group{{ $errors->has('village') ? ' has-error' : '' }}">
-                <label for="village" class="col-md-4 control-label">village</label>
+                <label for="village" class="col-md-4 control-label"> {{ __('forms.village') }} </label>
 
                 <div class="col-md-6">
                     <input id="village" type="text" class="form-control" name="village" value="{{ old('village') }}">
@@ -146,7 +146,7 @@
             </div>
 
             <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
-                <label for="city" class="col-md-4 control-label">city</label>
+                <label for="city" class="col-md-4 control-label"> {{ __('forms.city') }} </label>
 
                 <div class="col-md-6">
                     <input id="city" type="text" class="form-control" name="city" value="{{ old('city') }}">
@@ -160,7 +160,7 @@
             </div>
 
             <div class="form-group{{ $errors->has('district') ? ' has-error' : '' }}">
-                <label for="district" class="col-md-4 control-label">district</label>
+                <label for="district" class="col-md-4 control-label"> {{ __('forms.district') }} </label>
 
                 <div class="col-md-6">
                     <input id="district" type="text" class="form-control" name="district" value="{{ old('district') }}">
@@ -175,7 +175,7 @@
             <hr>
 
             <div class="row">
-                <button type="submit" class="btn btn-success col-md-6 col-md-offset-4">Register</button>
+                <button type="submit" class="btn btn-success col-md-6 col-md-offset-4"> {{ __('forms.register') }} </button>
             </div>
 
         </form>

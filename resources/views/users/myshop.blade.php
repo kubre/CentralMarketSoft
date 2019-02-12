@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Search Debt. through My Shop</div>
+                <div class="panel-heading">{{ __('user.myshop') }}</div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -17,52 +17,52 @@
                     <form id="debt-search-form" class="form-horizontal" action="javascript:void(0)" method="post">
                         <div class="row" style="margin: 10px auto;">
                             <div class="col-md-6 row">
-                                <label for="" class="col-md-4">First Name</label>
+                                <label for="" class="col-md-4">{{ __('forms.firstname') }}</label>
                                 <input class="col-md-8 search" type="text" id="first_name" name="first_name">
                             </div>
                             <div class="col-md-6 row">
-                                <label for="" class="col-md-4">Last Name</label>
+                                <label for="" class="col-md-4"> {{ __('forms.lastname') }} </label>
                                 <input class="col-md-8 search" type="text" name="last_name" id="last_name">
                             </div>
                         </div>
                         <div class="row" style="margin: 10px auto;">
                             <div class="col-md-6 row">
-                                <label for="" class="col-md-4">Mobile</label>
+                                <label for="" class="col-md-4"> {{ __('forms.mobile') }} </label>
                                 <input class="col-md-8 search" type="text" name="mobile" id="mobile">
                             </div>
                             <div class="col-md-6 row">
-                                <label for="" class="col-md-4">Village</label>
+                                <label for="" class="col-md-4"> {{ __('forms.village') }} </label>
                                 <input class="col-md-8 search" type="text" name="village" id="village">
                             </div>
                         </div>
                         <div class="row" style="margin: 10px auto;">
                             <div class="col-md-6 row">
-                                <label for="" class="col-md-4">Aadhar</label>
+                                <label for="" class="col-md-4"> {{ __('forms.aadharno') }} </label>
                                 <input class="col-md-8 search" type="text" name="aadhar" id="aadhar">
                             </div>
                             <div class="col-md-6 row">
-                                <label class="col-md-4" for="">PAN</label>
+                                <label class="col-md-4" for=""> {{ __('forms.panno') }} </label>
                                 <input class="col-md-8 search" type="text" name="pan" id="pan">
                             </div>
                         </div>
                     </form>
                     <hr>
                     <div class="">
-                        <strong>Search Results</strong>
+                        <strong> {{ __('user.searchresults') }} </strong>
                         <table class="table" id="debt-table">
                             <thead>
                                 <tr>
-                                    <th>Full Name</th>
-                                    <th>Aadhar/PAN</th>
-                                    <th>Address</th>
-                                    <th>Reamining Amount</th>
-                                    <th>Amount Issued</th>
-                                    <th>Details</th>
+                                    <th> {{ __('user.fullname') }} </th>
+                                    <th> {{ __('forms.aadharno') }}/{{ __('forms.panno') }} </th>
+                                    <th> {{ __('user.shop') }} </th>
+                                    <th> {{ __('user.remainingamount') }} </th>
+                                    <th> {{ __('user.amountissued') }} </th>
+                                    <th> {{ __('user.details') }} </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td colspan="5">Type something above...</td>
+                                    <td colspan="5">{{ __('user.type') }}...</td>
                                 </tr>
                             </tbody>
                         </table>
