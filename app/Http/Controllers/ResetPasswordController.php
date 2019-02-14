@@ -32,7 +32,7 @@ class ResetPasswordController extends Controller
             return view('auth.passwords.reset', $reset_auth);
         }
         return back()->withErrors([
-            "aadhar" => "Addhar or PAN is invalid!",
+            "aadhar" => __('forms.aadharno').'/'.__('forms.panno').__('messages.dontexists'),
         ]);
     }
 
@@ -49,11 +49,11 @@ class ResetPasswordController extends Controller
             $user->password = Hash::make($request->input('password'));
             if ($user->save()) {
                 return redirect('\login')->with('messages', [
-                    "Successfully reseted password!"
+                    __('messages.successsaving')
                 ]);
             }
         }
-        return back()->withErrors(["password" => "Please start password reset process again!"])
+        return back()->withErrors(["password" => __('errorpasswordchange')])
                     ->withInput();
     }
 }

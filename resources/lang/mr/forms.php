@@ -52,4 +52,5 @@ return [
     'register' => 'नोदंणी करा',
     'lightbill' => 'लाईट बिल',
     'houseno' => 'घर क्र.',
+    'logout' => 'बाहेर पडा'
 ];

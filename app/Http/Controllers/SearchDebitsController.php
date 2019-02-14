@@ -56,11 +56,11 @@ class SearchDebitsController extends Controller
                         }
                     }
                 } else {
-                    $htmlTable = "<tr><td colspan='6'>No Match Found!</td></tr>";
+                    $htmlTable = '<tr><td colspan="6">'.__('messages.notfound').'</td></tr>';
                 }
                 $count = $farmers->count();
             } else {
-                $htmlTable = "<tr><td colspan='6'>Type Something above to search!</td></tr>";
+                $htmlTable = '<tr><td colspan="6">'.__('user.type').'</td></tr>';
             }
             return response()->json([
                 "tbody" => $htmlTable,

@@ -54,7 +54,7 @@ class DebitsController extends Controller
 
         if (is_null($farmer)) {
             return back()->withErrors([
-                "identity" => "Aadhar/PAN doesn't exist."
+                "identity" => __('forms.aadharno').'/'.__('forms.panno').__('messages.dontexists')
             ])->withInput();
         }
 
@@ -74,7 +74,7 @@ class DebitsController extends Controller
             $transaction->amount = $amountRounded;
             if ($transaction->save()) {
                 return back()->with('messages', [
-                "success" => "Debt. issued successfully! Please search and make sure it exists in Search Debt. Screen"
+                "success" => __('messages.debtsuccess'),
                 ]);
             }
             // As transaction failed delete debt. also
@@ -83,7 +83,7 @@ class DebitsController extends Controller
 
         // As good old days :) make user panic with error message; lol those exclamations
         return back()->withErrors([
-            "problem" => "Problem! Problem! Creating debt. failed! Contact Administrator!"
+            "problem" => __('messages.debtproblem'),
         ])->withInput();
     }
 
@@ -149,7 +149,7 @@ class DebitsController extends Controller
             $transaction->amount = $amountRounded;
             if ($transaction->save()) {
                 return back()->with('messages', [
-                "success" => "Debt. issued successfully! Please search and make sure it exists in Search Debt. Screen"
+                "success" => __('messages.debtsuccess'),
                 ]);
             }
             // As transaction failed, Make no changes to debt. and return with errors
@@ -157,7 +157,7 @@ class DebitsController extends Controller
             $debt->save();
         }
         return back()->withErrors([
-                    "problem" => "Problem while updating Debt.! Contact Administrator!"
+                    "problem" => __('messages.debtproblem'),
                 ])->withInput();
     }
 

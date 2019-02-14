@@ -29,5 +29,5 @@
 ## Some features to enhance experience
  - [x] My Shop Section serve as dashboard
  - [x] Set Up Localization
- - [ ] Views in marathi
+ - [x] Views in marathi
  - [x] Error messagaes in marathi 

@@ -93,43 +93,17 @@ class DashboardController extends Controller
                         }
                     }
                 } else {
-                    $htmlTable = "<tr><td colspan='6'>No Match Found!</td></tr>";
+                    $htmlTable = '<tr><td colspan="6">'.__('messages.notfound').'</td></tr>';
                 }
                 $count = $farmers->count();
             } else {
-                $htmlTable = "<tr><td colspan='6'>Type Something above to search!</td></tr>";
+                $htmlTable = '<tr><td colspan="6">'.__('user.type').'</td></tr>';
             }
             return response()->json([
                 "tbody" => $htmlTable,
                 "count" => $count,
             ]);
         }
-        // $data = $request->validate([
-        //     "name" => "required|string"
-        // ]);
-
-        // $farmers = Farmer::where('first_name', 'like', "%{$data['name']}%")
-        //                 ->orWhere('last_name', 'like', "%{$data['name']}%")
-        //                 ->get();
-        // $f = $farmers->filter(function ($farmer, $index) {
-        //     return $farmer->debits->user_id == Auth::user()->id;
-        // });
-
-        // dd($f);
-
-        // $found = false;
-
-        // if ($debts->count() > 0) {
-        //     $found = true;
-        // }
-
-        // dd($debts->first()->user);
-
-        // return view('users.myshop', [
-        //     'debts' => $debts,
-        //     'name' => $data['name'],
-        //     'found' => $found
-        // ]);
     }
 
     public function license()
@@ -148,10 +122,10 @@ class DashboardController extends Controller
         $shop->seed_exp = $request->seed_exp;
         
         if (!$shop->save()) {
-            return back()->withErrors(["Problem while update seed expiry."]);
+            return back()->withErrors([__('messages.errorsaving')]);
         }
 
-        return back()->with('messages', ['Updated seed license date successfully!']);
+        return back()->with('messages', [__('messages.successsaving')]);
     }
 
     public function updateFertExp(Request $request)
@@ -164,10 +138,10 @@ class DashboardController extends Controller
         $shop->fert_exp = $request->fert_exp;
         
         if (!$shop->save()) {
-            return back()->withErrors(["Problem while update Fertilizer expiry."]);
+            return back()->withErrors([__('messages.errorsaving')]);
         }
         
-        return back()->with('messages', ['Updated Fertilizer license date successfully!']);
+        return back()->with('messages', [__('messages.successsaving')]);
     }
 
     public function updatePestExp(Request $request)
@@ -180,10 +154,10 @@ class DashboardController extends Controller
         $shop->pest_exp = $request->pest_exp;
         
         if (!$shop->save()) {
-            return back()->withErrors(["Problem while update Pesticide expiry."]);
+            return back()->withErrors([__('messages.errorsaving')]);
         }
         
-        return back()->with('messages', ['Updated Pesticde license date successfully!']);
+        return back()->with('messages', [__('messages.successsaving')]);
     }
 
     public function updateShopExp(Request $request)
@@ -196,9 +170,9 @@ class DashboardController extends Controller
         $shop->shop_exp = $request->shop_exp;
         
         if (!$shop->save()) {
-            return back()->withErrors(["Problem while update Shop Act expiry."]);
+            return back()->withErrors([__('messages.errorsaving')]);
         }
         
-        return back()->with('messages', ['Updated Shop Act date successfully!']);
+        return back()->with('messages', [__('messages.successsaving')]);
     }
 }

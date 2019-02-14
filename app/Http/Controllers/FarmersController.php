@@ -46,7 +46,7 @@ class FarmersController extends Controller
 
         if (!$farmer->save()) {
             return back()
-                    ->withErrors(['Problem while registering farmer!'])
+                    ->withErrors([ __('messages.errorsaving') ])
                     ->withInput();
         }
         
@@ -55,10 +55,10 @@ class FarmersController extends Controller
             $farmer->destroy();
             
             return back()
-                    ->withErrors(['Problem while adding Address!'])
+                    ->withErrors([__('messages.errorsavingaddress')])
                     ->withInput();
         }
 
-        return back()->with('messages', ['Farmer registered succesfully!']);
+        return back()->with('messages', [__('messages.successsaving')]);
     }
 }
