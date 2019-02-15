@@ -12,6 +12,15 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+    * {
+        font-size: 104%; 
+    }
+
+    .panel:last-child {
+        margin-bottom: 100px;
+    }
+    </style>
     @yield('styles')
 </head>
 <body>
@@ -30,7 +39,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                       लासूर अॅग्री
+                       लासूर ऍगरी
                     </a>
                 </div>
 

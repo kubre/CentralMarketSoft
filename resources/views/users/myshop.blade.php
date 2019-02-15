@@ -17,38 +17,38 @@
                     <form id="debt-search-form" class="form-horizontal" action="javascript:void(0)" method="post">
                         <div class="row" style="margin: 10px auto;">
                             <div class="col-md-6 row">
-                                <label for="" class="col-md-4">{{ __('forms.firstname') }}</label>
-                                <input class="col-md-8 search" type="text" id="first_name" name="first_name">
+                                <label for="" class="col-md-4 col-xs-12">{{ __('forms.firstname') }}</label>
+                                <input class="col-md-8 col-xs-12 search" type="text" id="first_name" name="first_name">
                             </div>
                             <div class="col-md-6 row">
-                                <label for="" class="col-md-4"> {{ __('forms.lastname') }} </label>
-                                <input class="col-md-8 search" type="text" name="last_name" id="last_name">
-                            </div>
-                        </div>
-                        <div class="row" style="margin: 10px auto;">
-                            <div class="col-md-6 row">
-                                <label for="" class="col-md-4"> {{ __('forms.mobile') }} </label>
-                                <input class="col-md-8 search" type="text" name="mobile" id="mobile">
-                            </div>
-                            <div class="col-md-6 row">
-                                <label for="" class="col-md-4"> {{ __('forms.village') }} </label>
-                                <input class="col-md-8 search" type="text" name="village" id="village">
+                                <label for="" class="col-md-4 col-xs-12"> {{ __('forms.lastname') }} </label>
+                                <input class="col-md-8 col-xs-12 search" type="text" name="last_name" id="last_name">
                             </div>
                         </div>
                         <div class="row" style="margin: 10px auto;">
                             <div class="col-md-6 row">
-                                <label for="" class="col-md-4"> {{ __('forms.aadharno') }} </label>
-                                <input class="col-md-8 search" type="text" name="aadhar" id="aadhar">
+                                <label for="" class="col-md-4 col-xs-12"> {{ __('forms.mobile') }} </label>
+                                <input class="col-md-8 col-xs-12 search" type="text" name="mobile" id="mobile">
                             </div>
                             <div class="col-md-6 row">
-                                <label class="col-md-4" for=""> {{ __('forms.panno') }} </label>
-                                <input class="col-md-8 search" type="text" name="pan" id="pan">
+                                <label for="" class="col-md-4 col-xs-12"> {{ __('forms.village') }} </label>
+                                <input class="col-md-8 col-xs-12 search" type="text" name="village" id="village">
+                            </div>
+                        </div>
+                        <div class="row" style="margin: 10px auto;">
+                            <div class="col-md-6 row">
+                                <label for="" class="col-md-4 col-xs-12"> {{ __('forms.aadharno') }} </label>
+                                <input class="col-md-8 col-xs-12 search" type="text" name="aadhar" id="aadhar">
+                            </div>
+                            <div class="col-md-6 row">
+                                <label class="col-md-4 col-xs-12" for=""> {{ __('forms.panno') }} </label>
+                                <input class="col-md-8 col-xs-12 search" type="text" name="pan" id="pan">
                             </div>
                         </div>
                     </form>
                     <hr>
-                    <div class="">
                         <strong> {{ __('user.searchresults') }} </strong>
+                    <div class="table-responsive">
                         <table class="table" id="debt-table">
                             <thead>
                                 <tr>

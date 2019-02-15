@@ -62,7 +62,7 @@
             <hr>
 
             <div class="row">
-                <button type="submit" class="btn btn-success col-md-6 col-md-offset-4"> {{ __('user.issue') }} </button>
+                <button type="submit" class="btn btn-success col-xs-12 col-md-6 col-md-offset-4"> {{ __('user.issue') }} </button>
             </div>
 
         </form>
