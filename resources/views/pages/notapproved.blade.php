@@ -3,7 +3,7 @@
 @section('content')
 <div class="container panel">
     <div class="panel-heading">
-        <h3>{{ __('user.usernotauthheading') }}</h3>
+        <h3>{{ __('messages.usernotauthheading') }}</h3>
     </div>
     <div class="panel-body">
         <p>

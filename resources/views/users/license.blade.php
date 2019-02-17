@@ -20,7 +20,7 @@
                     {{ method_field('PUT') }}
                     <div class="col-md-8 row input-group">
                         <label class="col-md-5 col-xs-12" for="seed_exp">{{ __('user.expiry') }} {{ __('user.update') }} :</label>
-                        <input class="col-md-4 col-xs-12" style="padding: 5px 6px;margin: 10px auto" type="date" name="seed_exp" id="seed_exp" value="{{ $shop->seed_exp }}" required>
+                        <input class="col-md-4 col-xs-12 datepick" style="padding: 5px 6px;margin: 10px auto" type="text" name="seed_exp" id="seed_exp" value="{{ $shop->seed_exp }}" required>
                         <button class="col-md-2 col-xs-12 col-md-offset-1 btn btn-success" type="submit">{{ __('user.save') }}</button>
                     </div>
                 </form>
@@ -42,7 +42,7 @@
                     {{ method_field('PUT') }}
                     <div class="col-sm-8 row input-group">
                         <label class="col-md-5 col-xs-12" for="fert_exp">{{ __('user.expiry') }} {{ __('user.update') }} :</label>
-                        <input class="col-md-4 col-xs-12" style="padding: 6px 6px;margin: 10px auto" type="date" name="fert_exp" id="fert_exp" value="{{ $shop->fert_exp }}" required>
+                        <input class="col-md-4 col-xs-12 datepick" style="padding: 6px 6px;margin: 10px auto" type="text" name="fert_exp" id="fert_exp" value="{{ $shop->fert_exp }}" required>
                         <button class="btn btn-success col-md-offset-1 col-md-2 col-xs-12" type="submit">{{ __('user.save') }}</button>
                     </div>
                 </form>
@@ -64,7 +64,7 @@
                     {{ method_field('PUT') }}
                     <div class="col-md-8 row input-group">
                         <label class="col-md-5 col-xs-12" for="pest_exp">{{ __('user.expiry') }} {{ __('user.update') }} :</label>
-                        <input class="col-md-4 col-xs-12" style="padding: 5px 6px;margin: 10px auto" type="date" name="pest_exp" id="pest_exp" value="{{ $shop->pest_exp }}" required>
+                        <input class="col-md-4 col-xs-12 datepick" style="padding: 5px 6px;margin: 10px auto" type="text" name="pest_exp" id="pest_exp" value="{{ $shop->pest_exp }}" required>
                         <button class="col-md-2 col-xs-12 col-md-offset-1 btn btn-success" type="submit">{{ __('user.save') }}</button>
                     </div>
                 </form>
@@ -86,7 +86,7 @@
                     {{ method_field('PUT') }}
                     <div class="col-md-8 row input-group">
                         <label class="col-md-5 col-xs-12" for="shop_exp">{{ __('user.expiry') }} {{ __('user.update') }} :</label>
-                        <input class="col-md-4 col-xs-12" style="padding: 5px 6px;margin: 10px auto" type="date" name="shop_exp" id="shop_exp" value="{{ $shop->shop_exp }}" required>
+                        <input class="col-md-4 col-xs-12 datepick" style="padding: 5px 6px;margin: 10px auto" type="text" name="shop_exp" id="shop_exp" value="{{ $shop->shop_exp }}" required>
                         <button class="col-md-2 col-xs-12 col-md-offset-1 btn btn-success" type="submit">{{ __('user.save') }}</button>
                     </div>
                 </form>

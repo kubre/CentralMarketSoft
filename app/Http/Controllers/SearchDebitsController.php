@@ -51,7 +51,7 @@ class SearchDebitsController extends Controller
                                     <td> {$farmer->address->block_no}, {$farmer->address->village}, {$farmer->address->city} </td> 
                                     <td> {$debit->user->shop->shop_name}, {$debit->user->shop->address->village} </td> 
                                     <td> Rs. $debit->amount </td>
-                                    <td> <a class='btn btn-info' href='/debit/$debit->id'>View</a> </td>
+                                    <td> <a class='btn btn-info' href='/debit/$debit->id'>". __('user.details') ."</a> </td>
                                 </tr>";
                         }
                     }

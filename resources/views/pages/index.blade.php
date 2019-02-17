@@ -9,4 +9,8 @@
     @else
         <h2 class="text-center"> लॉग इन करा </h2>
     @endauth
+
+    <div class="text-center">
+    <a style="margin-top: 20px" class="btn btn-success" href="https://drive.google.com/file/d/1orBwiOZ0aEX0qXa-Ijh9x7ToAXzp0Sem/view?usp=sharing"> डॉनलोड मराठी टायपिंग सॉफ्टवेअर</a>
+    </div>
 @endsection

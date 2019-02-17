@@ -83,7 +83,7 @@
                             <label for="dob" class="col-md-4 control-label">{{__('forms.dob')}}</label>
 
                             <div class="col-md-6">
-                                <input id="dob" type="date" class="form-control" name="dob" value="{{ old('dob') }}" required>
+                                <input id="dob" class="datepick" type="text" class="form-control" name="dob" value="{{ old('dob') }}" required>
 
                                 @if ($errors->has('dob'))
                                     <span class="help-block">
@@ -97,7 +97,7 @@
                             <label for="shop_do" class="col-md-4 control-label">{{__('forms.shopdo')}}</label>
 
                             <div class="col-md-6">
-                                <input id="shop_do" type="date" class="form-control" name="shop_do" value="{{ old('shop_do') }}" required>
+                                <input id="shop_do" class="datepick" type="text" class="form-control" name="shop_do" value="{{ old('shop_do') }}" required>
 
                                 @if ($errors->has('shop_do'))
                                     <span class="help-block">
@@ -125,7 +125,7 @@
                             <label for="seed_exp" class="col-md-4 control-label">{{__('forms.seedexp')}}</label>
 
                             <div class="col-md-6">
-                                <input id="seed_exp" type="date" class="form-control" name="seed_exp" value="{{ old('seed_exp') }}">
+                                <input id="seed_exp" type="text" class="datepick form-control" name="seed_exp" value="{{ old('seed_exp') }}">
 
                                 @if ($errors->has('seed_exp'))
                                     <span class="help-block">
@@ -154,7 +154,7 @@
                             <label for="fert_exp" class="col-md-4 control-label">{{__('forms.fertexp')}}</label>
 
                             <div class="col-md-6">
-                                <input id="fert_exp" type="date" class="form-control" name="fert_exp" value="{{ old('fert_exp') }}">
+                                <input id="fert_exp" type="text" class="datepick form-control" name="fert_exp" value="{{ old('fert_exp') }}">
 
                                 @if ($errors->has('fert_exp'))
                                     <span class="help-block">
@@ -182,7 +182,7 @@
                             <label for="pest_exp" class="col-md-4 control-label">{{__('forms.pestexp')}}</label>
 
                             <div class="col-md-6">
-                                <input id="pest_exp" type="date" class="form-control" name="pest_exp" value="{{ old('pest_exp') }}">
+                                <input id="pest_exp" type="text" class="datepick form-control" name="pest_exp" value="{{ old('pest_exp') }}">
 
                                 @if ($errors->has('fert_exp'))
                                     <span class="help-block">
@@ -210,7 +210,7 @@
                             <label for="shop_exp" class="col-md-4 control-label">{{__('forms.shopexp')}}</label>
 
                             <div class="col-md-6">
-                                <input id="shop_exp" type="date" class="form-control" name="shop_exp" value="{{ old('shop_exp') }}">
+                                <input id="shop_exp" type="text" class="datepick form-control" name="shop_exp" value="{{ old('shop_exp') }}">
 
                                 @if ($errors->has('shop_exp'))
                                     <span class="help-block">

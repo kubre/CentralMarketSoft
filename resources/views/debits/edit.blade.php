@@ -7,9 +7,9 @@
     @include('layouts.messages')
 
     <div class="panel-heading row">
-        <h4 class="col-md-8">Edit Debt. for {{ $debt->farmer->first_name }} {{ $debt->farmer->last_name }}</h4>
+        <h4 class="col-md-8"> {{ __('user.updatedebt') }} {{ $debt->farmer->first_name }} {{ $debt->farmer->last_name }}</h4>
         <span class="col-md-2 col-md-offset-2">
-            <a class='btn btn-primary btn-block' style="margin-top: 5px" href='/debit/{{$debt->id}}'>View Details</a>
+            <a class='btn btn-primary btn-block' style="margin-top: 5px" href='/debit/{{$debt->id}}'> {{ __('user.details') }} </a>
         </span>
     </div>
     <div class="panel-body">
@@ -20,7 +20,7 @@
 
 
             <div class="form-group{{ $errors->has('amount') ? ' has-error' : '' }}">
-                <label for="identity" class="col-md-4 control-label">Addhar/PAN</label>
+                <label for="identity" class="col-md-4 control-label"> {{ __('forms.aadharno') }}/{{ __('forms.panno') }} </label>
 
                 <div class="col-md-6">
 
@@ -29,7 +29,7 @@
             </div>
 
             <div class="form-group{{ $errors->has('comment') ? ' has-error' : '' }}">
-                <label for="comment" class="col-md-4 control-label">Comment</label>
+                <label for="comment" class="col-md-4 control-label"> {{ __('user.comment') }} </label>
 
                 <div class="col-md-6">
                     <input id="comment" type="text" class="form-control" name="comment" maxlength="255" value="{{ $debt->comment or old('comment') }}">
@@ -41,12 +41,12 @@
                     @endif
                 </div>
             </div>
-            <span class="help-block text-center">Comment is Optional.</span>
+            <span class="help-block text-center"> {{ __('user.comment') }} {{ __('user.isoptional') }} </span>
 
             <div class="row">
-                <div class="col-sm-4">Old Amount</div>
-                <div class="col-sm-5">Amount to Subtract</div>
-                <div class="col-sm-3">New Amount</div>
+                <div class="col-sm-4"> {{ __('user.remainingamount') }} </div>
+                <div class="col-sm-5"> {{ __('user.subtractamount') }} </div>
+                <div class="col-sm-3"> {{ __('user.newamount') }} </div>
             </div>
             <hr>
 
@@ -75,7 +75,7 @@
             <hr>
 
             <div class="row">
-                <button type="submit" class="btn btn-success col-md-6 col-md-offset-4">Update</button>
+                <button type="submit" class="btn btn-success col-md-6 col-md-offset-4"> {{ __('user.update') }} </button>
             </div>
 
         </form>

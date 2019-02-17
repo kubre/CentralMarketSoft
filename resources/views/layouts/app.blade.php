@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+      <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <style>
     * {
         font-size: 104%; 
@@ -86,6 +87,13 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.datepick').datepicker();
+            $('.datepick').datepicker("option", "dateFormat", "yy-mm-dd");
+        });
+    </script>
     @yield('scripts')
 </body>
 </html>

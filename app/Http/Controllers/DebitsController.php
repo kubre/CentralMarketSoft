@@ -112,7 +112,7 @@ class DebitsController extends Controller
     {
         $debt = Debit::find($id);
 
-        if ($debt->user_id !== Auth::user()->id) {
+        if ($debt->user_id != Auth::user()->id) {
             return back()->with(Auth::logout());
         }
 

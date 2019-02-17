@@ -2,7 +2,7 @@
 
 
 return [
-    'debtsearch' => 'कर्ज शोधा',
+    'debtsearch' => 'उधारी शोधा',
     'myshop' => 'माझी दुकान',
     'shopname' => 'दुकान',
     'amountissued' => 'जारी रक्कम',
@@ -10,10 +10,13 @@ return [
     'remainingamount' => 'उर्वरित रक्कम',
     'amount' => 'रक्कम(रु.)',
     'details' => 'तपशील',
-    'debtdetails' => 'कर्जाचा तपशील',
+    'debtdetails' => 'उधारीचा तपशील',
     'type' => 'काहीतरी टाइप करा',
     'searchresults' => 'शोध परिणाम',
-    'issuedebt' => 'कर्ज द्या',
+    'issuedebt' => 'उधारी द्या',
+    'updatedebt' => 'उधारीची रक्कम बदला',
+    'subtractamount' => 'रक्कम वजा करा',
+    'newamount' => 'नविन रक्कम',
     'comment' => 'टिप्पणी',
     'isoptional' => 'पर्यायी आहे',
     'license' => 'परवाना',
@@ -27,12 +30,12 @@ return [
     'fullname' => 'पुर्ण नाव',
     'address' => 'पत्ता',
     'shop' => 'दुकानाची माहिती',
-    'registerfarmer' => 'शेतकरी नोंदणी',
+    'registerfarmer' => 'गा्रहक नोंदणी',
     'date' => 'दिंनाक',
-    'farmersdetails' => 'शेतकरीची माहिती',
+    'farmersdetails' => 'गा्रहकाची माहिती',
     'owner' => 'मालक',
     'transaction' => 'व्यवहाराचा',
-    'shopno' => 'दुकान क्.',
+    'shopno' => 'दुकान क्रमांक.',
     'inr' => '(रु.)',
     'nill' => 'निल'
 ];

@@ -47,7 +47,7 @@
         <h4 class="col-md-3"> {{ __('user.debtdetails') }} </h4>
         @if(Auth::user()->id === $debt->user->id)
             <span class="col-md-3 col-md-offset-6">
-                <a class='btn btn-primary btn-block' style="margin-top: 5px" href='/debit/{{$debt->id}}/edit'>Update</a>
+                <a class='btn btn-primary btn-block' style="margin-top: 5px" href='/debit/{{$debt->id}}/edit'> {{ __('user.update') }} </a>
             </span>
         @endif
     </div>
@@ -59,7 +59,10 @@
             </div>
             
             <div class="col-md-4">
-                <strong>{{ __('user.remainingamount') }}</strong>: <span class="mono"> {{ $debt->amount == 0 ? __('user.nill') : number_format($debt->amount) }} {{ __('user.inr') }}
+                <strong>{{ __('user.remainingamount') }}</strong>:
+                <span class="mono">
+                {{ $debt->amount == 0 ? __('user.nill') : number_format($debt->amount) . __('user.inr')  }}
+                </span>
             </div>
 
             <div class="col-md-3">
@@ -154,7 +157,7 @@
                 @endforeach
                     <tr>
                         <td>{{ __('user.remainingamount')  }}: </td>
-                        <td class="mono"> {{ $debt->amount == 0 ? "Nill" : number_format($debt->amount) }} </td>
+                        <td class="mono"> {{ $debt->amount == 0 ? __('user.nill') : number_format($debt->amount) }} </td>
                         <td></td>
                     </tr>
             </tbody>

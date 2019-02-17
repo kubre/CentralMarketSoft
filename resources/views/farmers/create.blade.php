@@ -62,7 +62,7 @@
                 <label for="dob" class="col-md-4 control-label"> {{ __('forms.dob') }} </label>
 
                 <div class="col-md-6">
-                    <input id="dob" type="date" class="form-control" name="dob" value="{{ old('dob') }}" required>
+                    <input id="dob" type="text" class="datepick form-control" name="dob" value="{{ old('dob') }}" required>
 
                     @if ($errors->has('dob'))
                     <span class="help-block">
