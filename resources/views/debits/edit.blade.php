@@ -19,12 +19,25 @@
             {{ method_field('PUT') }}
 
 
-            <div class="form-group{{ $errors->has('amount') ? ' has-error' : '' }}">
+            {{-- <div class="form-group{{ $errors->has('amount') ? ' has-error' : '' }}">
                 <label for="identity" class="col-md-4 control-label"> {{ __('forms.aadharno') }}/{{ __('forms.panno') }} </label>
 
                 <div class="col-md-6">
 
                     <input id="identity" readonly type="text" class="form-control" name="identity" value="{{ $debt->farmer->aadhar }}">
+                </div>
+            </div> --}}
+            <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
+                <label for="shop_exp" class="col-md-4 control-label">{{__('user.date')}}</label>
+
+                <div class="col-md-6">
+                    <input id="date" type="text" class="datepick form-control" name="date" value="{{ old('date') }}">
+
+                    @if ($errors->has('date'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('date') }}</strong>
+                        </span>
+                    @endif
                 </div>
             </div>
 
@@ -90,8 +103,9 @@
         calcAmount();
 
         function calcAmount() {
-            var amount = parseFloat($('#total-amount').val()) - parseFloat($('#sub-amount').val());
-            if(amount < 0 || isNaN(amount)) {
+            var issuedAmount = parseFloat($('#total-amount').val()) 
+            var amount = issuedAmount - parseFloat($('#sub-amount').val());
+            if(amount < 0 || isNaN(amount) || issuedAmount <= 0) {
                 $("button[type='submit']").attr('disabled', 'true');
             } else {
                 $("button[type='submit']").removeAttr('disabled');

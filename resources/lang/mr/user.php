@@ -35,7 +35,7 @@ return [
     'farmersdetails' => 'गा्रहकाची माहिती',
     'owner' => 'मालक',
     'transaction' => 'व्यवहाराचा',
-    'shopno' => 'दुकान क्रमांक.',
+    'shopno' => 'दुकान क्र.',
     'inr' => '(रु.)',
     'nill' => 'निल'
 ];

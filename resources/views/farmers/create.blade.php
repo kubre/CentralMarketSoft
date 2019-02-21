@@ -28,6 +28,21 @@
                 </div>
             </div>
 
+            <div class="form-group{{ $errors->has('middle_name') ? ' has-error' : '' }}">
+                <label for="first_name" class="col-md-4 control-label"> {{ __('forms.middlename') }} </label>
+
+                <div class="col-md-6">
+                    <input id="middle_name" type="text" class="form-control" name="middle_name" value="{{ old('middle_name') }}"
+                        required>
+
+                    @if ($errors->has('middle_name'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('middle_name') }}</strong>
+                    </span>
+                    @endif
+                </div>
+            </div>
+
             <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
                 <label for="last_name" class="col-md-4 control-label"> {{ __('forms.lastname') }} </label>
 
@@ -48,7 +63,7 @@
 
                 <div class="col-md-6">
                     <input id="mobile" type="text" class="form-control" maxlength="10" maxlength="10" name="mobile"
-                        value="{{ old('mobile') }}" required>
+                        value="{{ old('mobile') }}">
 
                     @if ($errors->has('mobile'))
                     <span class="help-block">
@@ -77,7 +92,7 @@
 
                 <div class="col-md-6">
                     <input id="aadhar" type="text" class="form-control" maxlength="12" minlength="12" name="aadhar"
-                        value="{{ old('aadhar') }}" required>
+                        value="{{ old('aadhar') }}">
 
                     @if ($errors->has('aadhar'))
                     <span class="help-block">
@@ -91,8 +106,7 @@
                 <label for="pan" class="col-md-4 control-label">  {{ __('forms.panno') }} </label>
 
                 <div class="col-md-6">
-                    <input id="pan" type="text" class="form-control" maxlength="10" minlength="10" name="pan" value="{{ old('pan') }}"
-                        required>
+                    <input id="pan" type="text" class="form-control" maxlength="10" minlength="10" name="pan" value="{{ old('pan') }}">
 
                     @if ($errors->has('pan'))
                     <span class="help-block">
@@ -106,8 +120,7 @@
                 <label for="light_bill" class="col-md-4 control-label"> {{ __('forms.lightbill') }} </label>
 
                 <div class="col-md-6">
-                    <input id="light_bill" type="text" class="form-control" name="light_bill" value="{{ old('light_bill') }}"
-                        required>
+                    <input id="light_bill" type="text" class="form-control" name="light_bill" value="{{ old('light_bill') }}">
 
                     @if ($errors->has('light_bill'))
                     <span class="help-block">
@@ -141,6 +154,20 @@
                     <span class="help-block">
                         <strong>{{ $errors->first('village') }}</strong>
                     </span>
+                    @endif
+                </div>
+            </div>
+
+            <div class="form-group{{ $errors->has('taluka') ? ' has-error' : '' }}">
+                <label for="taluka" class="col-md-4 control-label">{{__('forms.taluka')}}</label>
+
+                <div class="col-md-6">
+                    <input id="taluka" type="text" class="form-control" name="taluka" value="{{ old('taluka') }}">
+
+                    @if ($errors->has('taluka'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('taluka') }}</strong>
+                        </span>
                     @endif
                 </div>
             </div>

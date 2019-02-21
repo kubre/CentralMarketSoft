@@ -140,16 +140,23 @@
                 </tr>
             </thead>
             <tbody style="font-family: monospace">
+                @php
+                    $lastAmount = 0;
+                @endphp
                 @foreach ($debt->transactions->all() as $transaction)
                     <tr>
                         <td> {{ date('j/M/Y', strtotime($transaction->created_at)) }} </td>
                         <td class="mono">
                             {{ $loop->first 
                                 ? number_format($transaction->amount)
-                                : number_format($transaction->amount - $lastAmount )
+                                : number_format($transaction->amount - $lastAmount)
                             }}
                         </td>
-                        <td> {{ $loop->first ? __('user.amountissued') : "" }}</td>
+                        <td>
+                            @if(Auth::user()->id === $debt->user->id)
+                                    <a href="/transaction/show/{{ $transaction->id }}/{{ $transaction->amount - $lastAmount }}" class="btn btn-info">{{ __('user.details') }}</a>
+                            @endif
+                        </td>
                     </tr>
                     @php
                         $lastAmount = $transaction->amount;

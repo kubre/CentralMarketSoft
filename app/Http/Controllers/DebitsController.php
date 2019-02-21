@@ -29,9 +29,13 @@ class DebitsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($farmerId)
     {
-        return view('debits.create');
+        $farmer = Farmer::find($farmerId);
+        if (is_null($farmer)) {
+            return back();
+        }
+        return view('debits.create')->with('farmer', $farmer);
     }
 
     /**
@@ -43,28 +47,20 @@ class DebitsController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            "identity" => "required|min:10|max:12",
+            "farmer_id" => "required|exists:farmers,id",
             "amount" => "required|numeric",
+            "date" => "required|date",
             "comment" => "nullable|max:255",
         ]);
-
-        $farmer = Farmer::where('aadhar', $data['identity'])
-                            ->orWhere('pan', $data['identity'])
-                            ->first();
-
-        if (is_null($farmer)) {
-            return back()->withErrors([
-                "identity" => __('forms.aadharno').'/'.__('forms.panno').__('messages.dontexists')
-            ])->withInput();
-        }
 
         $amountRounded = round($data['amount'], 2);
 
         $debt = new Debit();
         $debt->amount = $amountRounded;
         $debt->comment = $data['comment'];
-        $debt->farmer_id = $farmer->id;
+        $debt->farmer_id = $data['farmer_id'];
         $debt->user_id = Auth::user()->id;
+        $debt->created_at = $data['date'];
 
         if ($debt->save()) {
 
@@ -72,6 +68,7 @@ class DebitsController extends Controller
             $transaction = new Transaction();
             $transaction->debit_id = $debt->id;
             $transaction->amount = $amountRounded;
+            $transaction->created_at = $data['date'];
             if ($transaction->save()) {
                 return back()->with('messages', [
                 "success" => __('messages.debtsuccess'),
@@ -130,6 +127,7 @@ class DebitsController extends Controller
     {
         $data = $request->validate([
             "amount" => "required|numeric",
+            "date" => "required|date",
             "comment" => "nullable|max:255"
         ]);
 
@@ -147,6 +145,7 @@ class DebitsController extends Controller
             $transaction = new Transaction();
             $transaction->debit_id = $debt->id;
             $transaction->amount = $amountRounded;
+            $transaction->created_at = $data['date'];
             if ($transaction->save()) {
                 return back()->with('messages', [
                 "success" => __('messages.debtsuccess'),
@@ -170,5 +169,20 @@ class DebitsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function issue()
+    {
+        return view('users.farmers');
+    }
+
+    public function showTransaction($id, $amountPaid)
+    {
+        $transaction = Transaction::find($id);
+
+        return view('debits.transaction', [
+            'transaction' => $transaction,
+            'amountPaid' => $amountPaid
+            ]);
     }
 }

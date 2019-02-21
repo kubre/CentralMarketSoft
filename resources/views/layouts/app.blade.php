@@ -21,6 +21,9 @@
     .panel:last-child {
         margin-bottom: 100px;
     }
+    .btn-big {
+        font-size: 100%;
+    }
     </style>
     @yield('styles')
 </head>
@@ -40,7 +43,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                       लासूर ऍगरी
+                       लासूर अॅग्री 
                     </a>
                 </div>
 

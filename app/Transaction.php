@@ -10,4 +10,9 @@ class Transaction extends Model
     {
         return $this->belongsTo('App\Debit');
     }
+
+    public function shop()
+    {
+        return $this->debit->user->shop;
+    }
 }
