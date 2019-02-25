@@ -88,7 +88,7 @@ class DashboardController extends Controller
                             if ($debit->user_id == Auth::user()->id) {
                                 $htmlTable .= "
                                 <tr>
-                                    <td> $farmer->first_name $farmer->last_name </td> 
+                                    <td> $farmer->first_name $farmer->middle_name $farmer->last_name </td> 
                                     <td> $farmer->aadhar / $farmer->pan </td> 
                                     <td> {$farmer->address->block_no}, {$farmer->address->village}, {$farmer->address->city} </td> 
                                     <td> {$debit->transactions->first()->amount} </td> 

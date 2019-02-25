@@ -29,7 +29,7 @@ class SearchDebitsController extends Controller
         $mobile = $request->input('mobile');
         $aadhar = $request->input('aadhar');
         $pan = $request->input('pan');
-        
+
         if ($request->ajax()) {
             if (!(empty($first_name) && empty($last_name) && empty($mobile) && empty($aadhar) && empty($pan)
             && empty($village) && empty($middle_name) && empty($taluka))) {
@@ -53,10 +53,10 @@ class SearchDebitsController extends Controller
                         foreach ($descByAmount->all() as $debit) {
                             $htmlTable .= "
                                 <tr>
-                                    <td> $farmer->first_name $farmer->last_name </td> 
-                                    <td> $farmer->aadhar / $farmer->pan </td> 
-                                    <td> {$farmer->address->block_no}, {$farmer->address->village}, {$farmer->address->city} </td> 
-                                    <td> {$debit->user->shop->shop_name}, {$debit->user->shop->address->village} </td> 
+                                    <td> $farmer->first_name $farmer->middle_name $farmer->last_name </td>
+                                    <td> $farmer->aadhar / $farmer->pan </td>
+                                    <td> {$farmer->address->block_no}, {$farmer->address->village}, {$farmer->address->city} </td>
+                                    <td> {$debit->user->shop->shop_name}, {$debit->user->shop->address->village} </td>
                                     <td> Rs. $debit->amount </td>
                                     <td> <a class='btn btn-info' href='/debit/$debit->id'>". __('user.details') ."</a> </td>
                                 </tr>";

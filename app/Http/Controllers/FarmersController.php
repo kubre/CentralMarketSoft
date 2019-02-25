@@ -100,7 +100,7 @@ class FarmersController extends Controller
                     foreach ($farmers as $farmer) {
                         $htmlTable .= "
                                 <tr>
-                                    <td> $farmer->first_name $farmer->mobile_name $farmer->last_name </td> 
+                                    <td> $farmer->first_name $farmer->middle_name $farmer->last_name </td> 
                                     <td> $farmer->mobile </td> 
                                     <td> $farmer->aadhar </td> 
                                     <td> $farmer->pan </td> 
