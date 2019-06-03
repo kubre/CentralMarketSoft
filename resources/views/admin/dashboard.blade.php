@@ -43,7 +43,7 @@
                 @forelse($users as $user)
                 <tr>
                     <td> {{ $user->name }} </td>
-                    <td> {{ $user->shop->shop_name }} </td>
+                    <td> {{ isset($user->shop) ? $user->shop->shop_name : "" }} </td>
                     <td> {{ $user->mobile }} </td>
                     <td style="width: 200px">
                         @if($user->is_active)

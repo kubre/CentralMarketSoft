@@ -13,7 +13,7 @@ return [
     'debtdetails' => 'उधारीचा तपशील',
     'type' => 'काहीतरी टाइप करा',
     'searchresults' => 'शोध परिणाम',
-    'issuedebt' => 'उधारी द्या',
+    'issuedebt' => 'उधारी नांवे द्या',
     'updatedebt' => 'उधारीची रक्कम बदला',
     'subtractamount' => 'रक्कम वजा करा',
     'newamount' => 'नविन रक्कम',
@@ -35,7 +35,7 @@ return [
     'farmersdetails' => 'गा्रहकाची माहिती',
     'owner' => 'मालक',
     'transaction' => 'व्यवहाराचा',
-    'shopno' => 'दुकान क्रमांक.',
+    'shopno' => 'दुकान क्र.',
     'inr' => '(रु.)',
     'nill' => 'निल'
 ];

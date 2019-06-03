@@ -17,12 +17,13 @@ class CreateFarmersTable extends Migration
         Schema::create('farmers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('first_name');
+            $table->string('middle_name');
             $table->string('last_name');
-            $table->string('mobile')->unique();
             $table->date('dob');
-            $table->string('aadhar')->unique();
-            $table->string('pan')->unique();
-            $table->string('light_bill');
+            $table->string('mobile')->default('NA');
+            $table->string('aadhar')->default('NA');
+            $table->string('pan')->default('NA');
+            $table->string('light_bill')->default('NA');
             $table->timestamps();
         });
 

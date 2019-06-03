@@ -4,6 +4,7 @@
 return [
 
     'firstname' => 'पहिले नाव',
+    'middlename' => 'वडिलांचे नाव',
     'lastname' => 'शेवटचे नाव',
     'search' => 'शोधा',
     'usernumber' => 'नोंदणीकृत वापरकर्त्यांची संख्या',
@@ -44,6 +45,7 @@ return [
     'shoplic' => 'दुकान परवाना नंबर',
     'shopexp' => 'दुकान परवाना संपण्याची दिनांक',
     'village' => 'गाव',
+    'taluka' => 'तालुका',
     'city' => 'शहर',
     'district' => 'जिल्हा',
     'adminsection' => 'अधिकारी विभाग',

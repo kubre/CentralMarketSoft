@@ -7,27 +7,14 @@
     @include('layouts.messages')
 
     <div class="panel-heading">
-        <h4> {{ __('user.issuedebt') }} </h4>
+        <h4> {{ __('user.issuedebt') }} -> {{ $farmer->first_name }} {{ $farmer->last_name }} </h4>
     </div>
     <div class="panel-body">
 
         <form class="form-horizontal" action="/debit" method="post">
             {{ csrf_field() }}
 
-            <div class="form-group{{ $errors->has('identity') ? ' has-error' : '' }}">
-                <label for="identity" class="col-md-4 control-label"> {{ __('forms.aadharno') }}/{{ __('forms.panno') }} </label>
-
-                <div class="col-md-6">
-                    <input id="identity" type="text" class="form-control" name="identity" value="{{ old('identity') }}"
-                        required autofocus>
-
-                    @if ($errors->has('identity'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('identity') }}</strong>
-                    </span>
-                    @endif
-                </div>
-            </div>
+            <input id="farmer_id" type="hidden" class="form-control" name="farmer_id" value="{{ $farmer->id }}" required>
 
             <div class="form-group{{ $errors->has('amount') ? ' has-error' : '' }}">
                 <label for="amount" class="col-md-4 control-label"> {{ __('user.amount') }} </label>
@@ -40,6 +27,20 @@
                     <span class="help-block">
                         <strong>{{ $errors->first('amount') }}</strong>
                     </span>
+                    @endif
+                </div>
+            </div>
+
+            <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
+                <label for="shop_exp" class="col-md-4 control-label">{{__('user.date')}}</label>
+
+                <div class="col-md-6">
+                    <input id="date" type="text" class="datepick form-control" name="date" value="{{ old('date') }}">
+
+                    @if ($errors->has('date'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('date') }}</strong>
+                        </span>
                     @endif
                 </div>
             </div>

@@ -49,8 +49,18 @@ Route::get('/admin/user/search', function () {
 
 Route::get('/farmer/create', 'FarmersController@create');
 
+Route::get('/debit/issue', 'DebitsController@issue');
+
+Route::post('/farmer/search', 'FarmersController@search');
+
 Route::post('/farmer', 'FarmersController@store');
 
-Route::resource('/debit', 'DebitsController');
+Route::resource('/debit', 'DebitsController', [ 'except' => [
+    'create'
+]]);
+
+Route::get('/debit/create/{farmerId}', 'DebitsController@create');
+
+Route::get('/transaction/show/{id}/{amountPaid}', 'DebitsController@showTransaction');
 
 Route::post("/debit/search", "SearchDebitsController@search");

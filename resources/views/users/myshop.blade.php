@@ -27,6 +27,16 @@
                         </div>
                         <div class="row" style="margin: 10px auto;">
                             <div class="col-md-6 row">
+                                <label for="" class="col-md-4 col-xs-12"> {{ __('forms.middlename') }} </label>
+                                <input class="col-md-8 col-xs-12 search" type="text" name="middle_name" id="middle_name">
+                            </div>
+                            <div class="col-md-6 row">
+                                <label for="" class="col-md-4 col-xs-12"> {{ __('forms.taluka') }} </label>
+                                <input class="col-md-8 col-xs-12 search" type="text" name="taluka" id="taluka">
+                            </div>
+                        </div>
+                        <div class="row" style="margin: 10px auto;">
+                            <div class="col-md-6 row">
                                 <label for="" class="col-md-4 col-xs-12"> {{ __('forms.mobile') }} </label>
                                 <input class="col-md-8 col-xs-12 search" type="text" name="mobile" id="mobile">
                             </div>
@@ -45,18 +55,23 @@
                                 <input class="col-md-8 col-xs-12 search" type="text" name="pan" id="pan">
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button type="submit" class="btn btn-primary btn-block btn-big">{{ __('forms.search') }}</button>
+                            </div>
+                        </div>
                     </form>
                     <hr>
-                        <strong> {{ __('user.searchresults') }} </strong>
+                    <strong> {{ __('user.searchresults') }} </strong>
                     <div class="table-responsive">
                         <table class="table" id="debt-table">
                             <thead>
                                 <tr>
                                     <th> {{ __('user.fullname') }} </th>
                                     <th> {{ __('forms.aadharno') }}/{{ __('forms.panno') }} </th>
-                                    <th> {{ __('user.shop') }} </th>
-                                    <th> {{ __('user.remainingamount') }} </th>
+                                    <th> {{ __('user.address') }} </th>
                                     <th> {{ __('user.amountissued') }} </th>
+                                    <th> {{ __('user.remainingamount') }} </th>
                                     <th> {{ __('user.details') }} </th>
                                 </tr>
                             </thead>
@@ -85,11 +100,14 @@
                 });
             }
 
-            $("#debt-search-form").on("keyup", "input.search",function() {
+            $("#debt-search-form").on("submit", function(e) {
+                e.preventDefault();
                 var data = {
                     "_token": "{{ csrf_token() }}",
                     "first_name": $("#first_name").val(),
                     "last_name": $("#last_name").val(),
+                    "middle_name": $("#middle_name").val(),
+                    "taluka": $("#taluka").val(),
                     "mobile": $("#mobile").val(),
                     "village": $("#village").val(),
                     "aadhar": $("#aadhar").val(),
@@ -101,76 +119,3 @@
         });
     </script>
 @endsection
-
-{{--@extends('layouts.user')
-
-@section('content')
-<div class="container panel">
-    <div class="panel-heading">My Shop</div>
-    <div class="panel-body">
-
-        <div class="row">
-        <!-- Search Box -->
-        <form class="form-horizontal col-md-6" action="/myshop/debt/search" method="post">
-            {{ @csrf_field() }}
-            <div class="input-group">
-                <input class="form-control" name="name" id="name" type="text" 
-                maxlength="10" value="{{ isset($name) ? $name : '' }}" 
-                placeholder="Search by Name">
-
-                <span class="input-group-btn">
-                    <button type="submit" class="btn btn-default">Search</button>
-                </span>
-            </div>
-        </form>
-        </div>
-        <hr>
-        <p>
-            <!-- No of users found -->
-            @isset($found)
-                {{ $debts->count() }} Farmers with
-                with name like <strong>{{ $name }}</strong>.
-            @endisset
-        </p>
-
-        <!-- Go over users and display them -->
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Aadhar/PAN</th>
-                    <th>Mobile</th>
-                    <th>Remaining Amount</th>
-                    <th>Issued Amount</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse($debts->all() as $debt)
-                <tr>
-                    <td> {{ $debt->farmer->first_name }} {{ $debt->farmer->last_name }} </td>
-                    <td> {{ $debt->farmer->pan }} {{ $debt->farmer->pan }} </td>
-                    <td> {{ $debt->farmer->mobile }} </td>
-                    <td> {{ $debt->amount == 0 ? 'Nill' : $debt->amount }} </td>
-                    <td> {{ $debt->transactions->first()->amount }} </td>
-                    <td>
-                        <a href="/debit/{{$debt->id}}" class="btn btn-info">View</a>
-                    </td>
-                @empty
-                    @isset($found)
-                    <td colpsan="4">
-                        No users found with mobile no. {{ $mobile }}
-                    </td>
-                    @else
-                    <td colpsan="4">
-                        No users are registered
-                    </td>
-                    @endisset
-                </tr>
-                @endforelse
-            </tbody>
-        </table>
-        {{ $debts->links() }}
-    </div>
-</div>
-@endsection --}}

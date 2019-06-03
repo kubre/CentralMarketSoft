@@ -58,6 +58,8 @@ class DashboardController extends Controller
         // Search Fields
         $first_name = $request->input('first_name');
         $last_name = $request->input('last_name');
+        $middle_name = $request->input('middle_name');
+        $taluka = $request->input('taluka');
         $village = $request->input('village');
         $mobile = $request->input('mobile');
         $aadhar = $request->input('aadhar');
@@ -67,12 +69,16 @@ class DashboardController extends Controller
             if (!(empty($first_name) && empty($last_name) && empty($mobile) && empty($aadhar) && empty($pan))) {
 
                 // Fetch Farmers as per search criteria
-                $farmers = Farmer::where('first_name', 'like', "$first_name%")
-                                ->where('last_name', 'like', "$last_name%")
-                                ->where('mobile', 'like', "$mobile%")
-                                ->where('aadhar', 'like', "$aadhar%")
-                                ->where('pan', 'like', "$pan%")
-                                ->get();
+                $farmers = Farmer::where('first_name', 'like', "%$first_name%")
+                            ->where('middle_name', 'like', "$middle_name%")
+                            ->where('last_name', 'like', "$last_name%")
+                            ->where('mobile', 'like', "$mobile%")
+                            ->where('aadhar', 'like', "$aadhar%")
+                            ->where('pan', 'like', "$pan%")
+                            ->whereHas('address', function ($query) use ($village, $taluka) {
+                                $query->where('village', 'like', "$village%")
+                                        ->where('taluka', 'like', "$taluka%");
+                            })->get();
 
                 // Check if it even returned anything
                 if ($farmers->count() > 0) {
@@ -82,10 +88,10 @@ class DashboardController extends Controller
                             if ($debit->user_id == Auth::user()->id) {
                                 $htmlTable .= "
                                 <tr>
-                                    <td> $farmer->first_name $farmer->last_name </td> 
+                                    <td> $farmer->first_name $farmer->middle_name $farmer->last_name </td> 
                                     <td> $farmer->aadhar / $farmer->pan </td> 
                                     <td> {$farmer->address->block_no}, {$farmer->address->village}, {$farmer->address->city} </td> 
-                                    <td> {$debit->user->shop->shop_name}, {$debit->user->shop->address->village} </td> 
+                                    <td> {$debit->transactions->first()->amount} </td> 
                                     <td> $debit->amount </td>
                                     <td> <a class='btn btn-info' href='/debit/$debit->id'>". __('user.details') ."</a> </td>
                                 </tr>";

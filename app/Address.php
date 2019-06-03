@@ -13,6 +13,7 @@ class Address extends Model
         $address->belongs_to = $owner;
         $address->block_no = $request->input('block_no');
         $address->village = $request->input('village');
+        $address->taluka = $request->input('taluka') ?: '';
         $address->city = $request->input('city');
         $address->district = $request->input('district');
 
