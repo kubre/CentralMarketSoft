@@ -12,14 +12,12 @@
     <title> लासूर अॅग्री </title>
 
     <!-- Styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/datatables.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <style>
-        * {
-            font-size: 104%;
-        }
-
         .panel:last-child {
             margin-bottom: 100px;
         }
@@ -30,6 +28,7 @@
 
         body {
             background: #f4f4f4;
+            font-size: 1.7em;
         }
 
         .mynav {

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Debit;
 use App\Farmer;
+use Yajra\DataTables\DataTables;
 
 class DashboardController extends Controller
 {
@@ -41,6 +42,58 @@ class DashboardController extends Controller
                 ->simplePaginate(15);
 
         return view('users.myshop')->with('debts', $debts);
+    }
+
+    public function search()
+    {
+        $clients = Debit::all();
+
+        return DataTables::of($clients)
+            ->addColumn('first_name', function (Debit $debt) {
+                return $debt->farmer->first_name;
+            })
+            ->addColumn('aadhar', function (Debit $debt) {
+                return $debt->farmer->aadhar;
+            })
+            ->addColumn('address', function (Debit $debt) {
+                return "{$debt->farmer->address->village}, {$debt->farmer->address->taluka}, {$debt->farmer->address->district}";
+            })
+            ->addColumn('shop_name', function (Debit $debt) {
+                return $debt->user->shop->shop_name .', '. $debt->user->shop->address->village;
+            })
+            ->addColumn('action', function (Debit $debt) {
+                return "<a class='btn btn-info' href='/debit/$debt->id'>". __('user.details') ."</a>";
+            })
+            ->removeColumn('user_id')
+            ->removeColumn('farmer_id')
+            ->rawColumns(['action'])
+            ->make(true);
+    }
+
+    public function searchMyShop()
+    {
+        $clients = Debit::where('user_id', Auth::id())->get();
+
+        return DataTables::of($clients)
+            ->addColumn('first_name', function (Debit $debt) {
+                return $debt->farmer->first_name;
+            })
+            ->addColumn('aadhar', function (Debit $debt) {
+                return $debt->farmer->aadhar;
+            })
+            ->addColumn('address', function (Debit $debt) {
+                return "{$debt->farmer->address->village}, {$debt->farmer->address->taluka}, {$debt->farmer->address->district}";
+            })
+            ->addColumn('issue_amount', function (Debit $debt) {
+                return $debt->transactions->first()->amount;
+            })
+            ->addColumn('action', function (Debit $debt) {
+                return "<a class='btn btn-primary' href='/debit/$debt->id'>". __('user.details') ."</a>";
+            })
+            ->removeColumn('user_id')
+            ->removeColumn('farmer_id')
+            ->rawColumns(['action'])
+            ->make(true);
     }
 
     /**

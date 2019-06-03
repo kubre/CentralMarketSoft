@@ -1,11 +1,11 @@
 <?php
 
-
 return [
 
     'firstname' => 'पहिले नाव',
     'middlename' => 'वडिलांचे नाव',
     'lastname' => 'शेवटचे नाव',
+    'fullname' => 'संर्पुण नाव',
     'search' => 'शोधा',
     'usernumber' => 'नोंदणीकृत वापरकर्त्यांची संख्या',
     'withmobile' => 'मोबाइल नंबरसह जसे',

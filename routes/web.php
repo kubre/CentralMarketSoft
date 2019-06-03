@@ -25,6 +25,9 @@ Route::post('/password/reset/verify', 'ResetPasswordController@verify')->name('r
 Route::post('/password/reset/change', 'ResetPasswordController@reset')->name('reset.change');
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::get('/dashboard/data', 'DashboardController@search')->name('dashboard.getdata');
+Route::get('/myshop/data', 'DashboardController@searchMyShop')->name('myshop.getdata');
+Route::get('/farmer/search', 'FarmersController@search')->name('farmers.getdata');
 
 // License Section
 Route::get('/license', 'DashboardController@license');
@@ -50,8 +53,6 @@ Route::get('/admin/user/search', function () {
 Route::get('/farmer/create', 'FarmersController@create');
 
 Route::get('/debit/issue', 'DebitsController@issue');
-
-Route::post('/farmer/search', 'FarmersController@search');
 
 Route::post('/farmer', 'FarmersController@store');
 
