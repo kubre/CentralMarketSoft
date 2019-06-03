@@ -344,6 +344,20 @@
                                 @endif
                             </div>
                         </div>
+                        
+                        <div class="form-group{{ $errors->has('taluka') ? ' has-error' : '' }}">
+                            <label for="taluka" class="col-md-4 control-label">{{__('forms.taluka')}}</label>
+
+                            <div class="col-md-6">
+                                <input id="taluka" type="text" class="form-control" name="taluka" value="{{ old('taluka') }}">
+
+                                @if ($errors->has('taluka'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('taluka') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
                             <label for="city" class="col-md-4 control-label">{{__('forms.city')}}</label>
