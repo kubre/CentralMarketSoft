@@ -60,7 +60,7 @@
 			</span>
 		</div>
 		<div style="margin:20px;">
-			दिनांक : <span> {{ date("j/M/Y" ,strtotime($transaction->created_at)) }} </span>
+			दिनांक : <span> {{ date("Y" ,strtotime($transaction->created_at)) }} </span>
 		</div>
 		<div style="margin:20px;">
 			ग्राहक पत्ता :<span>
@@ -113,7 +113,7 @@
 			</span>
 		</div>
 		<div style="margin:20px;">
-			दिनांक : <span> {{ date("j/M/Y" ,strtotime($transaction->created_at)) }} </span>
+			दिनांक : <span> {{ date("Y" ,strtotime($transaction->created_at)) }} </span>
 		</div>
 		<div style="margin:20px;">
 			ग्राहक पत्ता :<span>

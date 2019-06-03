@@ -74,7 +74,7 @@ class FarmersController extends Controller
                 return "{$client->address->village}, {$client->address->taluka}, {$client->address->district}";
             })
             ->addColumn('action', function (Farmer $client) {
-                return "<a class='btn btn-info' href='/debit/create/$client->id'>". __('user.givedebt') ."</a>";
+                return "<a class='btn btn-success' href='/debit/create/$client->id'>". __('user.givedebt') ."</a>";
             })
             ->rawColumns(['action'])
             ->make(true);

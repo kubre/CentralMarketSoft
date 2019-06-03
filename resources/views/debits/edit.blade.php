@@ -9,7 +9,7 @@
         <div class="panel-heading">
             {{ __('user.updatedebt') }} {{ $debt->farmer->first_name }}
             {{ $debt->farmer->last_name }}
-            <span class="pull-right" style="position: relative; top: -50px">
+            <span class="pull-right" style="position: relative; top: -7px">
                 <a class='btn btn-primary btn-block' style="margin-top: 5px" href='/debit/{{$debt->id}}'>
                     {{ __('user.details') }} </a>
             </span>
@@ -36,7 +36,8 @@
             <label for="shop_exp" class="col-md-4 control-label">{{__('user.date')}}</label>
 
             <div class="col-md-6">
-                <input id="date" type="text" class="datepick form-control" name="date" value="{{ old('date') }}">
+                <input id="date" type="text" class="form-control" maxlength="4" minlength="4" name="date"
+                    value="{{ old('date') }}">
 
                 @if ($errors->has('date'))
                 <span class="help-block">

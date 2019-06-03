@@ -15,6 +15,7 @@ return [
     'searchresults' => 'शोध परिणाम',
     'issuedebt' => 'उधारी बाकी नांवे',
     'givedebt' => 'उधारी द्द्या',
+    'issuedate' => 'जारी दिनांक',
     'updatedebt' => 'उधारीची रक्कम बदला',
     'subtractamount' => 'रक्कम वजा करा',
     'newamount' => 'नविन रक्कम',

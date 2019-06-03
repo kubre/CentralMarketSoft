@@ -15,8 +15,10 @@
                                     <th> {{ __('forms.aadharno') }}</th>
                                     <th> {{ __('user.address') }} </th>
                                     <th> {{ __('user.shop') }} </th>
+                                    <th> {{ __('user.amountissued') }} </th>
+                                    <th> {{ __('user.issuedate') }} </th>
                                     <th> {{ __('user.remainingamount') }} </th>
-                                    <th> {{ __('user.details') }} </th>
+                                    <th style="width: 160px"> {{ __('user.details') }} </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,6 +45,8 @@
             { data: 'aadhar', name: 'aadhar' },
             { data: 'address', name: 'address' },
             { data: 'shop_name', name: 'shop_name' },
+            { data: 'issue_amount', name: 'issue_amount' },
+            { data: 'issue_date', name: 'issue_date' },
             { data: 'amount', name: 'amount'},
             { data: 'action', name: 'action', orderable: false, searchable: false },
             ]

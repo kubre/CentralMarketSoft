@@ -13,12 +13,9 @@
 
 Route::get('/', 'PagesController@index');
 
-
 Auth::routes();
 
 Route::get('/myshop', 'DashboardController@myShop');
-
-Route::post('/myshop/debt/search', 'DashboardController@searchDebt');
 
 Route::post('/password/reset/verify', 'ResetPasswordController@verify')->name('reset.verify');
 
@@ -63,5 +60,3 @@ Route::resource('/debit', 'DebitsController', [ 'except' => [
 Route::get('/debit/create/{farmerId}', 'DebitsController@create');
 
 Route::get('/transaction/show/{id}/{amountPaid}', 'DebitsController@showTransaction');
-
-Route::post("/debit/search", "SearchDebitsController@search");

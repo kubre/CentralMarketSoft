@@ -49,18 +49,20 @@ class DebitsController extends Controller
         $data = $request->validate([
             "farmer_id" => "required|exists:farmers,id",
             "amount" => "required|numeric",
-            "date" => "required|date",
+            "date" => "required|numeric|min:1900|max:2100",
             "comment" => "nullable|max:255",
         ]);
 
         $amountRounded = round($data['amount'], 2);
+
+        $formattedDate = \DateTime::createFromFormat('Y-m-d', "{$data['date']}-1-1");
 
         $debt = new Debit();
         $debt->amount = $amountRounded;
         $debt->comment = $data['comment'];
         $debt->farmer_id = $data['farmer_id'];
         $debt->user_id = Auth::user()->id;
-        $debt->created_at = $data['date'];
+        $debt->created_at = $formattedDate;
 
         if ($debt->save()) {
 
@@ -68,14 +70,14 @@ class DebitsController extends Controller
             $transaction = new Transaction();
             $transaction->debit_id = $debt->id;
             $transaction->amount = $amountRounded;
-            $transaction->created_at = $data['date'];
+            $transaction->created_at = $formattedDate;
             if ($transaction->save()) {
                 return back()->with('messages', [
                 "success" => __('messages.debtsuccess'),
                 ]);
             }
             // As transaction failed delete debt. also
-            $debt->destroy();
+            $debt->delete();
         }
 
         // As good old days :) make user panic with error message; lol those exclamations
@@ -127,9 +129,11 @@ class DebitsController extends Controller
     {
         $data = $request->validate([
             "amount" => "required|numeric",
-            "date" => "required|date",
+            "date" => "required|numeric|min:1900|max:2100",
             "comment" => "nullable|max:255"
         ]);
+
+        $formattedDate = \DateTime::createFromFormat('Y-m-d', "{$data['date']}-1-1");
 
         $amountRounded = round($data['amount'], 2);
 
@@ -145,7 +149,7 @@ class DebitsController extends Controller
             $transaction = new Transaction();
             $transaction->debit_id = $debt->id;
             $transaction->amount = $amountRounded;
-            $transaction->created_at = $data['date'];
+            $transaction->created_at = $formattedDate;
             if ($transaction->save()) {
                 return back()->with('messages', [
                 "success" => __('messages.debtsuccess'),
