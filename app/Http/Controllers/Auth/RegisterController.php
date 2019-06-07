@@ -57,25 +57,25 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
             'shop_name' => 'required|string|max:255',
             'dob' => 'required|date',
-            'shop_do' => 'required|date',
+            // 'shop_do' => 'required|date',
             
-            'seed_lic' => 'required|string',
-            'seed_exp' => 'required|date',
-            'fert_lic' => 'required|string',
-            'fert_exp' => 'required|date',
-            'pest_lic' => 'required|string',
-            'pest_exp' => 'required|date',
-            'shop_act' => 'required|string',
-            'shop_exp' => 'required|date',
+            // 'seed_lic' => 'required|string',
+            // 'seed_exp' => 'required|date',
+            // 'fert_lic' => 'required|string',
+            // 'fert_exp' => 'required|date',
+            // 'pest_lic' => 'required|string',
+            // 'pest_exp' => 'required|date',
+            // 'shop_act' => 'required|string',
+            // 'shop_exp' => 'required|date',
             
-            'gst' => 'required|string',
+            // 'gst' => 'required|string',
             'aadhar' => 'required|digits:12|unique:shops',
             'pan' => 'required|string|unique:shops',
 
-            'block_no' => 'required|string',
-            'village' => 'required|string',
-            'city' => 'required|string',
-            'district' => 'required|string',
+            // 'block_no' => 'required|string',
+            // 'village' => 'required|string',
+            // 'city' => 'required|string',
+            // 'district' => 'required|string',
         ]);
     }
 
@@ -105,21 +105,21 @@ class RegisterController extends Controller
     protected function registered(Request $request, $user)
     {
         // create new shop after user is registered
-        $shop =  new shop;
+        $shop =  new Shop;
         $shop->shop_name = $request->input('shop_name');
-        $shop->dob = $request->input('dob');
-        $shop->shop_do = $request->input('shop_do');
+        $shop->dob = formatDate($request->input('dob'));
+        $shop->shop_do = now();
         
-        $shop->seed_lic = $request->input('seed_lic');
-        $shop->seed_exp = $request->input('seed_exp');
-        $shop->fert_lic = $request->input('fert_lic');
-        $shop->fert_exp = $request->input('fert_exp');
-        $shop->pest_lic = $request->input('pest_lic');
-        $shop->pest_exp = $request->input('pest_exp');
-        $shop->shop_act = $request->input('shop_act');
-        $shop->shop_exp = $request->input('shop_exp');
+        $shop->seed_lic = 'NA';
+        $shop->seed_exp = now();
+        $shop->fert_lic = 'NA';
+        $shop->fert_exp = now();
+        $shop->pest_lic = 'NA';
+        $shop->pest_exp = now();
+        $shop->shop_act = 'NA';
+        $shop->shop_exp = now();
         
-        $shop->gst = $request->input('gst');
+        $shop->gst = 'NA';
         $shop->aadhar = $request->input('aadhar');
         $shop->pan = $request->input('pan');
         
@@ -127,12 +127,12 @@ class RegisterController extends Controller
 
         if (!$shop->save()) {
             return back()->withErrors([
-                'Problem while regitering shop!'
+                'Problem while registering Shop!'
             ]);
         }
 
         if (!Address::makeFromRequest($request, $shop->id)) {
-            $shop->destroy();
+            $shop->delete();
             return back()->withErrors([
                 'Problem while adding Address!'
             ]);

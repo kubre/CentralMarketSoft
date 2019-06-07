@@ -55,5 +55,7 @@ return [
     'register' => 'नोदंणी करा',
     'lightbill' => 'लाईट बिल',
     'houseno' => 'घर क्र.',
-    'logout' => 'बाहेर पडा'
+    'logout' => 'बाहेर पडा',
+    'profile' => 'प्रोफाइल',
+    'mobileistaken' => 'मोबाइल नंबर वापरात आहे.'
 ];

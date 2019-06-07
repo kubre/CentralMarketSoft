@@ -60,3 +60,6 @@ Route::resource('/debit', 'DebitsController', [ 'except' => [
 Route::get('/debit/create/{farmerId}', 'DebitsController@create');
 
 Route::get('/transaction/show/{id}/{amountPaid}', 'DebitsController@showTransaction');
+
+Route::get('/user/profile', 'ProfileController@profile');
+Route::put('/user/profile/update', 'ProfileController@update');

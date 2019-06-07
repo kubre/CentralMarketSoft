@@ -119,8 +119,8 @@
     <script src="{{ asset('js/datatables.min.js') }}"></script>
     <script>
         $(document).ready(function() {
-            $('.datepick').datepicker();
             $('.datepick').datepicker("option", "dateFormat", "yy-mm-dd");
+            $('.datepick').datepicker();
         });
     </script>
     @yield('scripts')
