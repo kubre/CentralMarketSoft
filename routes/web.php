@@ -48,6 +48,8 @@ Route::get('/admin/user/search', function () {
 });
 
 Route::get('/farmer/create', 'FarmersController@create');
+Route::get('/farmer/{id}/edit', 'FarmersController@edit');
+Route::put('/farmer/{id}', 'FarmersController@update');
 
 Route::get('/debit/issue', 'DebitsController@issue');
 

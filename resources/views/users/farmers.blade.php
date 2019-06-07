@@ -16,7 +16,7 @@
                                     <th> {{ __('forms.mobile') }} </th>
                                     <th> {{ __('forms.aadharno') }} </th>
                                     <th> {{ __('user.address') }} </th>
-                                    <th> {{ __('user.details') }} </th>
+                                    <th style="width: 200px;"> {{ __('user.details') }} </th>
                                 </tr>
                             </thead>
                             <tbody>

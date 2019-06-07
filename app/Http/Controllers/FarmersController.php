@@ -65,6 +65,45 @@ class FarmersController extends Controller
         return back()->with('messages', [__('messages.successsaving')]);
     }
 
+    public function edit(int $id)
+    {
+        $customer = Farmer::find($id);
+        return view('farmers.edit')->with('customer', $customer);
+    }
+
+    public function update(Request $request, int $id)
+    {
+        $data = $request->validate([
+            "first_name" => "required|string",
+            "mobile" => "nullable|regex:#[7-9]{1}\d{9}#",
+            "aadhar" => "nullable|digits:12",
+            'village' => 'required|string',
+            'taluka' => 'required|string',
+            'district' => 'required|string',
+        ]);
+
+        $farmer = Farmer::find($id);
+        
+        $farmer->first_name = $data['first_name'];
+        $farmer->mobile = $data['mobile'];
+        $farmer->aadhar = $data['aadhar'];
+
+        if (!$farmer->save()) {
+            return back()
+                    ->withErrors([ __('messages.errorsaving') ])
+                    ->withInput();
+        }
+        
+        // If error occured while adding address destroy farmer record too
+        if (!Address::makeFromRequest($request, $farmer->id)) {
+            return back()
+                    ->withErrors([__('messages.errorsavingaddress')])
+                    ->withInput();
+        }
+
+        return back()->with('messages', [__('messages.successsaving')]);
+    }
+
     public function search()
     {
         $clients = Farmer::all();
@@ -74,8 +113,13 @@ class FarmersController extends Controller
                 return "{$client->address->village}, {$client->address->taluka}, {$client->address->district}";
             })
             ->addColumn('action', function (Farmer $client) {
-                return "<a class='btn btn-success' href='/debit/create/$client->id'>". __('user.givedebt') ."</a>";
+                return "<div class='btn-group btn-group-justified'><a class='btn btn-success' href='/debit/create/$client->id'>". __('user.givedebt') ."</a>"
+                ."<a class='btn btn-default' href='/farmer/$client->id/edit'>". __('user.update') ."</a></div>";
             })
+            ->removeColumn('pan')
+            ->removeColumn('middle_name')
+            ->removeColumn('last_name')
+            ->removeColumn('light_bill')
             ->rawColumns(['action'])
             ->make(true);
     }
