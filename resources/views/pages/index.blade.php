@@ -11,11 +11,9 @@
     @endauth
 
     <div class="text-center">
-    <a style="margin-top: 20px" class="btn btn-success" href="https://drive.google.com/file/d/1orBwiOZ0aEX0qXa-Ijh9x7ToAXzp0Sem/view?usp=sharing"> डॉनलोड मराठी टायपिंग सॉफ्टवेअर</a>
+    {{-- <a style="margin-top: 20px" class="btn btn-success" href="https://drive.google.com/file/d/1orBwiOZ0aEX0qXa-Ijh9x7ToAXzp0Sem/view?usp=sharing"> डॉनलोड मराठी टायपिंग सॉफ्टवेअर</a> --}}
     </div>
-    <div style="opacity: 0; position: fixed; bottom: 40px; text-align: center;width: 100%">Designed and Developed by <a href="kubre.in">vkubre</a></div>
-
     <footer style="font-size: 1.2em;position: fixed;bottom: 0;width: 100%;height: 40px;text-align: center;background: #EEEEEA;line-height: 40px;border-top: 1px solid rgba(0,0,0,0.16);">
-    Designed &amp; Developed by <a class="btn-link" href="https://facebook.com/forepluss" target="_blank">ForePlus Technosolutions</a>
+    Designed &amp; Developed by <a class="btn-link" href="https://kubre.in" target="_blank">Vaibhav Kubre</a>
     </footer>
 @endsection

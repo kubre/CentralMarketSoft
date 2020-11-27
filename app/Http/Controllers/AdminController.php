@@ -13,7 +13,7 @@ class AdminController extends Controller
     }
 
     /**
-     * Dashboard for the Adminstrator
+     * Dashboard for the Administrator
      *
      * @return void
      */
@@ -71,16 +71,12 @@ class AdminController extends Controller
         $users = User::where('role', 'user')
                       ->where('mobile', 'LIKE', "%{$data['mobile']}%")
                       ->orderBy('created_at', 'desc')
-                      ->simplePaginate(100);
+                      ->paginate(100);
 
-        $found = false;
-        if (count($users) > 0) {
-            $found = true;
-        }
         return view('admin.dashboard', [
             'users' => $users,
             'mobile' => $data['mobile'],
-            'found' => $found
+            'found' => $users->isNotEmpty()
         ]);
     }
 }

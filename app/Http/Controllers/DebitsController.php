@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Debit;
 use App\Farmer;
 use App\Transaction;
+use Carbon\Carbon;
+use DateTime;
 
 class DebitsController extends Controller
 {
@@ -49,13 +51,13 @@ class DebitsController extends Controller
         $data = $request->validate([
             "farmer_id" => "required|exists:farmers,id",
             "amount" => "required|numeric",
-            "date" => "required|numeric|min:1900|max:2100",
+            "date" => "required|date",
             "comment" => "nullable|max:255",
         ]);
 
         $amountRounded = round($data['amount'], 2);
 
-        $formattedDate = \DateTime::createFromFormat('Y-m-d', "{$data['date']}-1-1");
+        $formattedDate = Carbon::parse($data['date']);
 
         $debt = new Debit();
         $debt->amount = $amountRounded;
@@ -65,7 +67,6 @@ class DebitsController extends Controller
         $debt->created_at = $formattedDate;
 
         if ($debt->save()) {
-
             // Make transaction <- First transaction
             $transaction = new Transaction();
             $transaction->debit_id = $debt->id;
@@ -129,11 +130,11 @@ class DebitsController extends Controller
     {
         $data = $request->validate([
             "amount" => "required|numeric",
-            "date" => "required|numeric|min:1900|max:2100",
+            "date" => "required|date",
             "comment" => "nullable|max:255"
         ]);
 
-        $formattedDate = \DateTime::createFromFormat('Y-m-d', "{$data['date']}-1-1");
+        $formattedDate = Carbon::parse($data['date']);
 
         $amountRounded = round($data['amount'], 2);
 

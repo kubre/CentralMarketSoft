@@ -68,7 +68,7 @@
 
                 <div class="col-md-3">
                     <strong> {{ __('user.date') }} :</strong> <span
-                        class="mono">{{ date('Y', strtotime($debt->created_at)) }}</span>
+                        class="mono">{{ date('d-M-Y', strtotime($debt->created_at)) }}</span>
                 </div>
             </div>
 
@@ -142,7 +142,7 @@
                         @endphp
                         @foreach ($debt->transactions->all() as $transaction)
                         <tr>
-                            <td> {{ date('Y', strtotime($transaction->created_at)) }} </td>
+                            <td> {{ date('d-M-Y', strtotime($transaction->created_at)) }} </td>
                             <td class="mono">
                                 {{ $loop->first 
                                 ? number_format($transaction->amount)

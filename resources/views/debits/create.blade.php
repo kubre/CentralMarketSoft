@@ -37,7 +37,7 @@
                     <label for="shop_exp" class="col-md-4 control-label">{{__('user.date')}}</label>
 
                     <div class="col-md-6">
-                        <input id="date" type="text" maxlength="4" minlength="4" class="form-control" name="date"
+                        <input id="date" type="text" maxlength="4" minlength="4" class="form-control datepick" name="date"
                             value="{{ old('date') }}">
 
                         @if ($errors->has('date'))

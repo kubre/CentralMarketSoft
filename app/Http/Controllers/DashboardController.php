@@ -65,7 +65,7 @@ class DashboardController extends Controller
                 return $debt->transactions->first()->amount;
             })
             ->addColumn('issue_date', function (Debit $debt) {
-                return date('Y', strtotime($debt->created_at));
+                return date('d-M-Y', strtotime($debt->created_at));
             })
             ->addColumn('action', function (Debit $debt) {
                 return
@@ -96,7 +96,7 @@ class DashboardController extends Controller
                 return $debt->transactions->first()->amount;
             })
             ->addColumn('issue_date', function (Debit $debt) {
-                return date('Y', strtotime($debt->created_at));
+                return date('d-M-Y', strtotime($debt->created_at));
             })
             ->addColumn('action', function (Debit $debt) {
                 return

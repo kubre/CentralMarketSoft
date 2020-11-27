@@ -74,7 +74,7 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, User $user)
     {
-        if ($user->isAdmin() && $user->is_active) {
+        if ($user->isAdmin()) {
             return redirect('admin');
         }
 

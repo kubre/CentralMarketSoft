@@ -1,11 +1,62 @@
 @extends('layouts.app')
 
+@section('styles')
+    <style>
+        body {
+            background: url('/images/bg.jpg');
+        }
+
+        .mynav, .panel {
+            background: rgba(0, 0, 0, 0.8);
+            color: #dfdfdf;
+        }
+
+        .panel input {
+            color: #dfdfdf;
+        }
+
+        .panel .btn-link {
+            border: 1px solid #fff;
+            color: #fff;
+        }
+
+        .panel .btn-link:hover {
+            color: #111;
+        }
+    </style>
+@endsection
+
 @section('content')
 <div class="container">
     @include('layouts.messages')
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-6">
             <div class="panel panel-default">
+                <div class="panel-heading">Demo Login Accounts</div>
+                <div class="panel-body">
+                    <table class="table table-stripped w-100">
+                        <tbody>
+                            <tr>
+                                <th class="text-center" colspan="2">Admin</th>
+                            </tr>
+                            <tr>
+                                <td>9090909090</td>
+                                <td>123456</td>
+                            </tr>
+                            <tr>
+                                <th class="text-center" colspan="2">User</th>
+                            </tr>
+                            <tr>
+                                <td>9123456789</td>
+                                <td>123456</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-primary">
                 <div class="panel-heading">{{__('forms.login')}}</div>
 
                 <div class="panel-body">
@@ -67,6 +118,7 @@
                 </div>
             </div>
         </div>
+        
     </div>
 </div>
 @endsection
